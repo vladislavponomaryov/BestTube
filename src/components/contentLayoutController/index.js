@@ -47,8 +47,14 @@
     function checkCurrentPosition(gettingCW,width) {
         if (currentCW !== gettingCW) {
             currentCW = gettingCW
+            let additional = ''
 
-            addStyles(`main .content section {flex: 1 0 calc(${width} - 16px - 0.01px)}`)
+            if (currentCW === largeCW || currentCW === mediumCW) {
+                additional = 'main .content section:last-child, main .content section:nth-child(31) {display: none}'
+            }
+
+            addStyles(`
+            main .content section {flex: 1 0 calc(${width} - 16px - 0.01px)}${additional}`)
         }
     }
 
