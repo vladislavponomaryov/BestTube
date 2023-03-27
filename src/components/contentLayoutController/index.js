@@ -1,6 +1,4 @@
 (function () {
-    let cl = console.log
-
     let mainContainer = document.querySelector('main .content')
     let mainContainerStyle = getComputedStyle(mainContainer)
     let mainContainerWidth = clearPX(mainContainerStyle.getPropertyValue('width'))
@@ -41,7 +39,6 @@
             stylesElement.innerHTML = styles
         }
 
-        cl('work')
     }
 
     function checkCurrentPosition(gettingCW,width) {
@@ -59,8 +56,6 @@
     }
 
     function controll() {
-
-        cl(mainContainerWidth)
 
         switch (true) {
             case mainContainerWidth > largeCW: {
