@@ -14,13 +14,13 @@ class Slider {
     init() {
         this.mainElementResize()
         this.getParams()
-        this.createButtons()
-        this.kineticScrolling()
+        this.sliderDisplay()
     }
 
     mainElementResize() {
         new ResizeObserver(() => {
             this.getParams()
+            this.sliderDisplay()
             this.wrapper.style.transform = 'translateX(0px)'
         }).observe(this.mainElement);
     }
@@ -34,6 +34,13 @@ class Slider {
 
         let wrapperWidth = this.wrapperStyle.getPropertyValue('width')
         this.wrapperWidth = this.clearPX(wrapperWidth)
+    }
+
+    sliderDisplay() {
+        if (this.mainElementWidth < this.wrapperWidth) {
+            this.createButtons()
+            this.kineticScrolling()
+        }
     }
 
     createButtons() {
