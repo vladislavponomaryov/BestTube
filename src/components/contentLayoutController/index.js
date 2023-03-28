@@ -1,11 +1,19 @@
 (function () {
-    let mainContainer = document.querySelector('main .content')
+
+    if (!document.querySelector('main .content .videoContent')) return
+
+    let mainContainer = document.querySelector('main .content div')
     let mainContainerStyle = getComputedStyle(mainContainer)
     let mainContainerWidth = clearPX(mainContainerStyle.getPropertyValue('width'))
-    let currentCW, largeCW = 1700, desktopCW = 1400, mediumCW = 982, smallCW = 600, extraSmallCW = 599.95
+    let currentCW, largeCW, desktopCW, mediumCW, smallCW, extraSmallCW
+    let page = 'channel'
 
-    function clearPX(element) {
-        return +element.slice(0, element.length - 2)
+    switch (page) {
+        case 'home':
+            largeCW = 1700, desktopCW = 1400, mediumCW = 982, smallCW = 600,extraSmallCW = 599.95
+            break;
+        case 'channel':
+            largeCW = 1030, desktopCW = 820, mediumCW = 610, smallCW = 479, extraSmallCW = 478.95
     }
 
     new ResizeObserver(entries => {
@@ -18,6 +26,10 @@
             controll()
         });
     }).observe(mainContainer);
+
+    function clearPX(element) {
+        return +element.slice(0, element.length - 2)
+    }
 
     function getParams() {
         mainContainerStyle = getComputedStyle(mainContainer)
@@ -41,17 +53,38 @@
 
     }
 
-    function checkCurrentPosition(gettingCW,width) {
+    function checkCurrentPosition(gettingCW,quantityElements) {
         if (currentCW !== gettingCW) {
             currentCW = gettingCW
             let additional = ''
 
-            if (currentCW === largeCW || currentCW === mediumCW) {
-                additional = 'main .content section:last-child, main .content section:nth-child(31) {display: none}'
+            if (page === 'home') {
+                if (currentCW === largeCW || currentCW === mediumCW) {
+                    additional = 'main .content .videoContent section:last-child, main .content section:nth-child(31) {display: none}'
+                }
+            }
+
+            if (page === 'channel') {
+                if (currentCW === desktopCW) {
+                    additional = 'main .content .videoContent section:last-child {display: none}'
+                }
+
+                if (currentCW === mediumCW) {
+                    additional = 'main .content .videoContent section:last-child, main .content .videoContent section:nth-child(4) {display: none}'
+                }
+
+                if (currentCW === smallCW) {
+                    additional = 'main .content .videoContent section:nth-child(3), main .content .videoContent section:nth-child(4), .videoContent section:last-child {display: none}'
+                }
+
+                if (currentCW === extraSmallCW) {
+                    additional = 'main .content .videoContent {flex-direction: column} main .content .videoContent section:nth-child(4), .videoContent section:last-child {display: none !important}'
+                }
+
             }
 
             addStyles(`
-            main .content section {flex: 1 0 calc(${width} - 16px - 0.01px)}${additional}`)
+            main .content .videoContent section {flex: 1 0 calc(${100/quantityElements}% - 16px - 0.01px)}${additional}`)
         }
     }
 
@@ -59,23 +92,23 @@
 
         switch (true) {
             case mainContainerWidth > largeCW: {
-                checkCurrentPosition(largeCW,'20%')
+                checkCurrentPosition(largeCW,5)
                 break;
             }
             case mainContainerWidth > desktopCW: {
-                checkCurrentPosition(desktopCW,'25%')
+                checkCurrentPosition(desktopCW,4)
                 break;
             }
             case mainContainerWidth > mediumCW: {
-                checkCurrentPosition(mediumCW,'33%')
+                checkCurrentPosition(mediumCW,3)
                 break;
             }
             case mainContainerWidth > smallCW: {
-                checkCurrentPosition(smallCW,'50%')
+                checkCurrentPosition(smallCW,2)
                 break;
             }
             case mainContainerWidth < extraSmallCW: {
-                checkCurrentPosition(extraSmallCW,'100%')
+                checkCurrentPosition(extraSmallCW,1)
                 break;
             }
         }

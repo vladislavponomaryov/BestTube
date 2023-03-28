@@ -3,12 +3,14 @@
 class Slider {
     position = 0
     constructor(mainElement) {
-        this.mainElement = document.querySelector(mainElement)
-        this.wrapper = this.mainElement.querySelector('.wrapper')
-        this.prevButtonId = 'prevButton'
-        this.nextButtonId = 'nextButton'
+        if (document.querySelector(mainElement)) {
+            this.mainElement = document.querySelector(mainElement)
+            this.wrapper = this.mainElement.querySelector('.wrapper')
+            this.prevButtonId = 'prevButton'
+            this.nextButtonId = 'nextButton'
 
-        this.init()
+            this.init()
+        }
     }
 
     init() {
