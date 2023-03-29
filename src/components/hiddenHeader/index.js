@@ -1,4 +1,7 @@
 (function () {
+
+    if (document.body.classList[0] === 'video') return
+
     /* Когда пользователь прокручивает вниз, скрыть навигационную панель. Когда пользователь прокручивает вверх, показать навигационную панель */
     let prevScrollpos = window.pageYOffset;
 

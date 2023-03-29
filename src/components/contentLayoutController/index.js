@@ -1,12 +1,14 @@
 (function () {
 
-    if (!document.querySelector('main .content .videoContent')) return
+    let page = getPageName()
+    let selector = `main .content.${page} .videoContent`
 
-    let mainContainer = document.querySelector('main .content .videoContent')
+    if (!document.querySelector(selector)) return
+
+    let mainContainer = document.querySelector(selector)
     let mainContainerStyle = getComputedStyle(mainContainer)
     let mainContainerWidth = clearPX(mainContainerStyle.getPropertyValue('width'))
     let currentCW, largeCW, desktopCW, mediumCW, smallCW, extraSmallCW
-    let page = 'channel'
 
     switch (page) {
         case 'home':
@@ -33,6 +35,10 @@
 
     function clearPX(element) {
         return +element.slice(0, element.length - 2)
+    }
+
+    function getPageName() {
+        if (document.body.classList[0]) return document.body.classList[0]
     }
 
     function getParams() {
@@ -69,6 +75,7 @@
             }
 
             if (page === 'channel') {
+
                 if (currentCW === desktopCW) {
                     additional = 'main .content .videoContent section:last-child {display: none}'
                 }

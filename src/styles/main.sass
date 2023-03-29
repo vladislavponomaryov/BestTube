@@ -10,9 +10,21 @@ button
   border: 0
   background: transparent
 
+iframe
+  border: 0
 // additional
-.home, .channel
+.content
   display: none
+
+body.home
+  .content:nth-child(1)
+    display: block
+body.channel
+  .content:nth-child(2)
+    display: block
+body.video
+  .content:nth-child(3)
+    display: flex
 
 //Styles
 html, body
@@ -35,7 +47,21 @@ html, body
     background-color: #AAAAAA
     /* цвет бегунка */
     border-radius: 20px
-/* округлось бегунка */
+
+
+.icon
+  display: flex
+  min-width: $iconWidth
+  min-height: $iconHeight
+  align-items: center
+  justify-content: center
+  border-radius: 50%
+
+  &:hover
+    background: $borderColor
+    border-radius: 50%
+    cursor: pointer
+
 
 .container-fluid
   padding: $mainMargin
@@ -65,54 +91,6 @@ body
     z-index: 9
     overflow-y: auto
     width: $asideWidth
-
-  > main
-    flex: 0 0 auto
-    min-height: calc(100vh - $headerHeight)
-    background: $black
-    z-index: 8
-    margin-left: $asideWidth
-    margin-top: $headerHeight
-    width: calc(100% - $asideWidth)
-
-  &.videoPage
-    background: $backgroundColor4
-
-    > .sidebar
-      left: -240px
-
-    > main
-      background: $backgroundColor4
-      width: $videoPageMainBlockWidth
-      margin-left: calc((100% - $videoPageMainBlockWidth) / 2)
-      margin-right: calc((100% - $videoPageMainBlockWidth) / 2)
-      padding: 24px
-
-  &.full-guide
-    .mini-guide
-      display: none
-
-  &.mini-guide
-    > main
-      margin-left: $asideMini
-      width: calc(100% - $asideMini)
-
-      header
-        .top-menu
-          width: calc(100% - $asideMini)
-
-    > .sidebar
-      width: $asideMini
-
-      .full-guide
-        display: none
-
-      footer
-        display: none
-
-
-body
-  > .sidebar
     &::-webkit-scrollbar
       width: 8px
     /* ширина всей полосы прокрутки */
@@ -135,18 +113,36 @@ body
       &::-webkit-scrollbar-thumb
         visibility: inherit
 
-.icon
-  display: flex
-  min-width: $iconWidth
-  min-height: $iconHeight
-  align-items: center
-  justify-content: center
-  border-radius: 50%
+  > main
+    flex: 0 0 auto
+    min-height: calc(100vh - $headerHeight)
+    background: $black
+    z-index: 8
+    margin-left: $asideWidth
+    margin-top: $headerHeight
+    width: calc(100% - $asideWidth)
 
-  &:hover
-    background: $borderColor
-    border-radius: 50%
-    cursor: pointer
+  &.full-guide
+    .mini-guide
+      display: none
+
+  &.mini-guide
+    > main
+      margin-left: $asideMini
+      width: calc(100% - $asideMini)
+
+      header
+        .top-menu
+          width: calc(100% - $asideMini)
+
+    > .sidebar
+      width: $asideMini
+
+      .full-guide
+        display: none
+
+      footer
+        display: none
 
 header
   .start, .center, .end
@@ -231,6 +227,7 @@ header
         width: 32px
         height: 32px
         border-radius: 50%
+
 
 .sidebar
   .full-guide
@@ -321,58 +318,9 @@ header
           font-weight: bold
           color: $grayColor
 
+
 main
-
   .content
-    &.home
-
-      > header
-        height: $headerHeight + 2
-        width: 100%
-
-        .top-menu
-          display: flex
-          align-items: center
-          width: calc(100% - $asideWidth)
-          position: fixed
-          top: $headerHeight
-          height: $headerHeight + 2
-          border: 1px solid $borderColor
-          border-left: 0
-          border-right: 0
-          z-index: 7
-          background: $backgroundColor
-
-          ul
-            height: 100%
-            display: flex
-            flex-wrap: nowrap
-            align-items: center
-
-            li
-              display: flex
-              align-items: center
-              color: $whiteColor
-              font-size: 0.875rem
-              padding: 0 12px
-              border-radius: 32px
-              height: 32px
-              background: $borderColor
-              border: 1px solid $topMenuItemBorderColor
-              margin: 0 6px
-
-              &.active, &.active:hover
-                background: $whiteColor
-                color: $borderColor
-
-              &:hover
-                background: $topMenuItemBorderColor
-                transition: 0.3s
-                cursor: pointer
-
-      .videoContent
-        padding: 24px 16px
-
     .videoContent
       display: flex
       flex-wrap: wrap
@@ -446,17 +394,66 @@ main
 
               &.account-name
                 display: block
+    .menu-header
+      height: $headerHeight + 2
+      width: 100%
 
-    &.channel
+      .top-menu
+        display: flex
+        align-items: center
+        width: calc(100% - $asideWidth)
+        position: fixed
+        top: $headerHeight
+        height: $headerHeight + 2
+        border: 1px solid $borderColor
+        border-left: 0
+        border-right: 0
+        z-index: 7
+        background: $backgroundColor
+
+        ul
+          height: 100%
+          display: flex
+          flex-wrap: nowrap
+          align-items: center
+
+          li
+            display: flex
+            align-items: center
+            color: $whiteColor
+            font-size: 0.875rem
+            padding: 0 12px
+            border-radius: 32px
+            height: 32px
+            background: $borderColor
+            border: 1px solid $topMenuItemBorderColor
+            margin: 0 6px
+
+            &.active, &.active:hover
+              background: $whiteColor
+              color: $borderColor
+
+            &:hover
+              background: $topMenuItemBorderColor
+              transition: 0.3s
+              cursor: pointer
+
+
+
+.home
+  main
+    .content
+      .videoContent
+        padding: 24px 16px
+
+
+.channel
+  main
+    .content
       > img
         width: 100%
 
-      > div
-        padding-left: calc((100% - $content-width) / 2)
-        padding-right: calc((100% - $content-width) / 2)
-        margin: 0 16px
-
-      header
+      .profile-header
         background: $channel-background-color
         padding-left: calc((100% - $content-width) / 2)
         padding-right: calc((100% - $content-width) / 2)
@@ -517,6 +514,9 @@ main
                 border-bottom: 1px solid $grayColor
 
       .list
+        padding-left: calc((100% - $content-width) / 2)
+        padding-right: calc((100% - $content-width) / 2)
+        margin: 0 16px
         background: $black
 
         .feature
@@ -598,10 +598,20 @@ main
                     -webkit-line-clamp: 2
                     -webkit-box-orient: vertical
 
-.videoPage
+
+.video
+  background: $backgroundColor4
+  > .sidebar
+    left: -240px
+
+  > main
+    background: $backgroundColor4
+    width: 90%
+    margin-left: 5%
+    margin-right: 5%
+    padding: 24px
   main
     .content
-      display: flex
 
       .primary
         flex: 1 1 auto
@@ -610,6 +620,7 @@ main
         iframe
           width: 100%
           height: 360px
+          z-index: 14
 
         .videoInfo
           padding: 20px 0 9px
@@ -710,7 +721,7 @@ main
               border-radius: 50%
               margin-right: 16px
             input
-              width: calc(100% - 60px)
+              width: calc(100% - 100px)
               background: transparent
               outline: none
               border: 0
@@ -756,75 +767,45 @@ main
                         margin-right: 6px
                         &:before
                           color: $grayColor
-      .list
+      .videoContent
+        display: flex
+        flex-direction: column
         flex: 0 0 400px
-        .top-menu
-            height: 100%
-            display: flex
-            flex-wrap: nowrap
-            align-items: center
-            margin-bottom: 12px
+        justify-content: flex-start
+        padding: 0
 
-            li
-              display: flex
-              align-items: center
-              color: $whiteColor
-              font-size: 0.875rem
-              padding: 0 12px
-              border-radius: 32px
-              height: 32px
-              background: $borderColor
-              border: 1px solid $topMenuItemBorderColor
-              margin: 0 6px
-
-              &.active, &.active:hover
-                background: $whiteColor
-                color: $borderColor
-
-              &:hover
-                background: $topMenuItemBorderColor
-                transition: 0.3s
-                cursor: pointer
-        .videoContent
+        section
+          margin: 0 2px
           display: flex
-          flex-direction: column
-          flex: 1 1 400px
-          justify-content: flex-start
-          padding: 0
+          flex: 1 1 auto
+          padding-bottom: 8px
 
-          section
-            margin: 0 2px
-            display: flex
-            flex: 1 1 auto
-            padding-bottom: 8px
+          > a
+            display: inline-block
+            img
+              height: 100px
+              width: auto
 
-            > a
-              display: inline-block
-              img
-                height: 100px
-                width: auto
+          .wrapper
+            padding: 0 0 0 5px
+            display: inline-block
+            .account
+              display: none
 
-            .wrapper
-              padding: 0 0 0 5px
-              display: inline-block
-              .account
-                display: none
-
-              .information
-                h4
-                  font-weight: 500
-                  padding: 0
-                  margin-bottom: 12px
-                  font-size: 14px
-                  overflow: hidden
-                  // многоточие
-                  text-overflow: ellipsis
-                  display: -webkit-box
-                  -webkit-line-clamp: 2
-                  -webkit-box-orient: vertical
-                .account-name
-                  display: block !important
-                span
-                  line-height: 1
-                  &:after
-                    display: none
+            .information
+              h4
+                font-weight: 500
+                padding: 0
+                margin-bottom: 12px
+                font-size: 14px
+                overflow: hidden
+                text-overflow: ellipsis
+                display: -webkit-box
+                -webkit-line-clamp: 2
+                -webkit-box-orient: vertical
+              .account-name
+                display: block !important
+              span
+                line-height: 1
+                &:after
+                  display: none
