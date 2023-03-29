@@ -2,7 +2,7 @@
 
     if (!document.querySelector('main .content .videoContent')) return
 
-    let mainContainer = document.querySelector('main .content div')
+    let mainContainer = document.querySelector('main .content .videoContent')
     let mainContainerStyle = getComputedStyle(mainContainer)
     let mainContainerWidth = clearPX(mainContainerStyle.getPropertyValue('width'))
     let currentCW, largeCW, desktopCW, mediumCW, smallCW, extraSmallCW
@@ -14,6 +14,10 @@
             break;
         case 'channel':
             largeCW = 1030, desktopCW = 820, mediumCW = 610, smallCW = 479, extraSmallCW = 478.95
+            break;
+        case 'video':
+            largeCW = 1030, desktopCW = 820, mediumCW = 610, smallCW = 479, extraSmallCW = 478.95
+            break;
     }
 
     new ResizeObserver(entries => {
