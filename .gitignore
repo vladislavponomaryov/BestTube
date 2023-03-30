@@ -1,5 +1,7 @@
 # dependencies
-/node_modules
 /.idea/*
 /dist
+/node_modules
 /package-lock.json
+/layout/node_modules
+/layout/package-lock.json
