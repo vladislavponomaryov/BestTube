@@ -1,9 +1,10 @@
 import MainLayout from "../layout/MainLayout";
 import {lazy} from "react";
+import Loadable from "../components/common/Loadable";
 
-const HomeDefault = lazy(() => import('../pages/home'))
-const Channel = lazy(() => import('../pages/channel'))
-const Video = lazy(() => import('../pages/video'))
+const HomeDefault = Loadable(lazy(() => import('../pages/home')))
+const Channel = Loadable(lazy(() => import('../pages/channel')))
+const Video = Loadable(lazy(() => import('../pages/video')))
 
 const MainRoutes = {
     path: '/',
