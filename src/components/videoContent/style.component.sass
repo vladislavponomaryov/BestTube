@@ -1,0 +1,77 @@
+@import "src/assets/style/variables"
+
+main
+  .content
+    .videoContent
+      display: flex
+      flex-wrap: wrap
+      justify-content: center
+
+      section
+        flex: 1 0 250px
+        margin: 0 8px 40px 8px
+
+        &:hover
+          cursor: pointer
+
+        .image
+          max-height: inherit
+          overflow: hidden
+          position: relative
+
+          img
+            width: 100%
+            height: auto
+
+          .videoLength
+            position: absolute
+            right: 0
+            bottom: 0
+            margin: 5px
+            background: rgba(0, 0, 0, 0.8)
+            font-size: 0.625rem
+            color: $whiteColor
+            padding: 2px 4px
+            border-radius: 3px
+
+        .wrapper
+          display: flex
+          flex-wrap: wrap
+          justify-content: flex-start
+          padding-top: 12px
+
+          .account
+            padding-right: 12px
+
+            img
+              width: 36px
+              height: 36px
+              border-radius: 50%
+
+          a
+            flex: 0 0 auto
+
+            &.information
+              width: calc(100% - 48px)
+
+            h4
+              color: $whiteColor
+              font-size: 0.75rem
+              font-weight: bold
+              padding-bottom: 5px
+              line-height: 1.4
+
+            a, span
+              font-size: 0.75rem
+              color: $grayColor
+              line-height: 1.2
+
+            a
+              text-transform: capitalize
+
+            span
+              display: inline-block
+              line-height: 0
+
+              &.account-name
+                display: block

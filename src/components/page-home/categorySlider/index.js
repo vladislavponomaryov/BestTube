@@ -1,5 +1,5 @@
 //Slider styles
-import './style.sass';
+import './style.component.sass';
 export default function CategorySlider() {
 
     // slider

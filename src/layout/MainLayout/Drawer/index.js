@@ -1,3 +1,4 @@
+import './style.component.sass'
 import MiniDrawer from "./MiniDrawer";
 import DrawerFooter from "./DrawerFooter";
 import MainDrawer from "./MainDrawer";

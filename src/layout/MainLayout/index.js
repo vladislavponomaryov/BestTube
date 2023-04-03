@@ -5,7 +5,7 @@ import {Outlet} from "react-router-dom";
 const MainLayout = () => {
 
     return (
-        <div className='body full-guide'>
+        <div id={'app'} className='full-guide'>
             <Header />
             <MainDrawer />
             <main>

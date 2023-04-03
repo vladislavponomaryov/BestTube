@@ -1,6 +1,7 @@
-import Video from "../video";
+import './style.component.sass'
+import Video from "./video";
 
-export default function VideoContent() {
+export default function VideoContent({videoCount}) {
 
     // contentLayoutController
     /*(function () {
@@ -145,7 +146,7 @@ export default function VideoContent() {
     })()*/
 
     let videoContent = []
-    for (let i = 0; i < 32; i++) {
+    for (let i = 0; i < videoCount; i++) {
         videoContent.push(<Video key={i}/>)
     }
 

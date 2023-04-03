@@ -1,3 +1,4 @@
+import './style.component.sass'
 import Logotype from "../../../components/header/logo";
 import Search from "../../../components/header/search";
 import HeaderNavigation from "../../../components/header/headerNavigation";
