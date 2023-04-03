@@ -1,8 +1,8 @@
 import './style.component.sass'
 import channelBackground from '../../assets/images/channel-page/channel-background.jpg'
-import ChannelProfile from "../../components/page-channel/profile";
-import Feature from "../../components/page-channel/feature";
-import Category from "../../components/page-channel/category";
+import ChannelProfile from "./profile";
+import Feature from "./feature";
+import Category from "./category";
 
 export default function Channel() {
 

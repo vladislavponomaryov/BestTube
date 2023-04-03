@@ -1,4 +1,4 @@
-import VideoContent from "../../videoContent";
+import VideoContent from "../../../components/videoContent";
 
 export default function Category({number}) {
     return (

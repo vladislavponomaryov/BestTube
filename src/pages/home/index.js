@@ -1,5 +1,5 @@
 import './style.component.sass'
-import CategorySlider from "../../components/page-home/categorySlider";
+import CategorySlider from "./categorySlider";
 import VideoContent from "../../components/videoContent";
 export default function Home() {
     return (

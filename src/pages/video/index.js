@@ -1,6 +1,6 @@
 import './style.component.sass'
 import userAvatar from '../../assets/images/userAvatars/9.png'
-import Comments from "../../components/page-video/comments";
+import Comments from "./comments";
 import VideoContent from "../../components/videoContent";
 
 export default function Video() {
