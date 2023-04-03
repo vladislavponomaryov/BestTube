@@ -53,7 +53,7 @@ html, body
 .container-fluid
   padding: $mainMargin
 
-#root div
+#root .body
   > header
     display: flex
     flex: 0 0 auto
@@ -265,7 +265,6 @@ header
             background: $borderColor
 
   .mini-guide
-    display: none
     margin-top: 4px
 
     ul
@@ -286,20 +285,23 @@ header
             margin-bottom: 4px
 
   footer
-    padding: 16px
+    padding: 16px 0
 
     &.hidden
       display: none
 
     ul
+      display: block
+      width: 100%
       list-style: none
       padding: 0
       margin: 0
+      margin-bottom: 16px
+      line-height: 1.2
 
       li
-        line-height: 1.2
-        margin-left: $-mainMarginLeft
-        margin-bottom: 16px
+        display: inline-block
+        margin-right: 5px
 
         a
           font-size: 0.8125rem
@@ -428,12 +430,10 @@ main
 
 
 
-.home
-  main
-    .content
-      .videoContent
-        padding: 24px 16px
-
+main
+  .content.home
+    .videoContent
+      padding: 24px 16px
 
 .channel
   main

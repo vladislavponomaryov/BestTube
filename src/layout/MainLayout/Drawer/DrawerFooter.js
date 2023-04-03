@@ -2,22 +2,20 @@ export default function DrawerFooter() {
     return (
         <footer>
             <ul>
-                <li>
-                    <a href="/about">About</a>
-                    <a href="/press">Press</a>
-                    <a href="/copyright">Copyright</a>
-                    <a href="/contactUs">Contact us</a>
-                    <a href="/creators">Creators</a>
-                    <a href="/advertise">Advertise</a>
-                    <a href="/developers">Developers</a>
-                </li>
-                <li>
-                    <a href="/terms">Terms</a>
-                    <a href="/privacy">Privacy</a>
-                    <a href="/policySafety">Policy & Safety</a>
-                    <a href="/HowYouTubeWorks">How YouTube works</a>
-                    <a href="/testNewFeatures">Test new features</a>
-                </li>
+                <li><a href="/about">About</a></li>
+                <li><a href="/press">Press</a></li>
+                <li><a href="/copyright">Copyright</a></li>
+                <li><a href="/contactUs">Contact us</a></li>
+                <li><a href="/creators">Creators</a></li>
+                <li><a href="/advertise">Advertise</a></li>
+                <li><a href="/developers">Developers</a></li>
+            </ul>
+            <ul>
+                <li><a href="/terms">Terms</a></li>
+                <li><a href="/privacy">Privacy</a></li>
+                <li><a href="/policySafety">Policy & Safety</a></li>
+                <li><a href="/HowYouTubeWorks">How YouTube works</a></li>
+                <li><a href="/testNewFeatures">Test new features</a></li>
             </ul>
         </footer>
     )

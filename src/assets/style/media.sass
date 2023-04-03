@@ -4,7 +4,7 @@
 @media screen and (max-width: 1348px)
   $asideMini: 72px
 
-  body
+  #root .body
     header
       background: $backgroundColor3
       border-bottom: 1px solid $borderColor
@@ -81,7 +81,7 @@
   html
     font-size: 110%
 
-  #root div
+  #root .body
     >header
       .center
         display: none
@@ -157,7 +157,7 @@
 // Работает до 600
 @media screen and (max-width: 600px)
 
-  body
+  #root .body
     main
       .content
         section
@@ -215,9 +215,9 @@
 
 // Работает до 511
 @media screen and (max-width: 511px)
-  body.channel
+  #root .body
     main
-      .content
+      .content.channel
         .list
           .category
             .videoContent
