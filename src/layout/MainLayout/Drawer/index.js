@@ -1,17 +1,23 @@
 import './style.component.sass'
-import MiniDrawer from "./MiniDrawer";
-import DrawerFooter from "./DrawerFooter";
+import MiniDrawer from "./MiniDrawer/MiniDrawer";
+import DrawerFooter from "./MainDrawer/DrawerFooter";
 import MainDrawer from "./MainDrawer";
+import React from "react";
+import useMediaQuery from "../../../hooks/useMediaQuery";
 
 const Drawer = () => {
 
-    // sidebar
-    /*(function () {
-        /!* Sidebar *!/
+    /* Sidebar */
+    const matches = useMediaQuery(`(max-width:1348px)`)
+
+    //const [disableResizeEvent,changeDisableResizeEvent] = useState(false)
+
+    function sidebarControll() {
+        /* Sidebar */
         let miniNavigationMediaWidth = 1348
         let needDisableResizeEvent = false
 
-        /!* Check in sidebar need full or mini navigation *!/
+        /* Check in sidebar need full or mini navigation */
         navigationMediaController(miniNavigationMediaWidth)
         window.addEventListener('resize',() => navigationMediaController(miniNavigationMediaWidth))
         document.querySelector('#button-guide').addEventListener('click',() => {
@@ -43,15 +49,19 @@ const Drawer = () => {
             document.body.classList.remove('mini-guide')
         }
 
-    })()*/
+    }
 
     return (
         <div className="sidebar">
-            <nav>
-                <MainDrawer/>
-                <MiniDrawer/>
-            </nav>
-            <DrawerFooter/>
+            {!matches ?
+                <nav>
+                    <MainDrawer/>
+                    <DrawerFooter/>
+                </nav>
+                : <nav>
+                    <MiniDrawer/>
+                </nav>
+            }
         </div>
     )
 }

@@ -63,24 +63,10 @@ html, body
     margin-top: $headerHeight
     width: calc(100% - $asideWidth)
 
-  &.full-guide
-    .mini-guide
-      display: none
+main
+  margin-left: $asideMini
+  width: calc(100% - $asideMini)
 
-  &.mini-guide
-    > main
-      margin-left: $asideMini
+  header
+    .top-menu
       width: calc(100% - $asideMini)
-
-      header
-        .top-menu
-          width: calc(100% - $asideMini)
-
-    > .sidebar
-      width: $asideMini
-
-      .full-guide
-        display: none
-
-      footer
-        display: none

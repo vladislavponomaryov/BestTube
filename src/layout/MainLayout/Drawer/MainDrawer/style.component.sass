@@ -1,0 +1,70 @@
+@import "src/assets/style/variables"
+
+.sidebar
+  .full-guide
+
+    h5
+      font-size: 0.9rem
+      font-weight: bold
+      color: $grayColor
+      text-transform: uppercase
+      padding: 20px 0 0 0
+      margin-bottom: -4px
+
+    .category
+      list-style: none
+      padding: 12px 0 12px 24px
+      border-bottom: 1px solid $borderColor
+      margin-left: -24px
+
+      li
+        a
+          display: flex
+          height: 40px
+          align-items: center
+          padding-left: 24px
+          margin-left: -24px
+
+          img
+            width: 24px
+            height: 24px
+            border-radius: 50%
+
+          &.hidden
+            display: none
+
+          .title
+            display: flex
+            font-size: 0.875rem
+            color: $whiteColor
+            margin-left: 24px
+
+        &.active
+          a
+            background: $borderColor
+
+        &:hover
+          a
+            cursor: pointer
+            background: $borderColor
+
+  footer
+    padding: 16px 0
+
+    ul
+      display: block
+      width: 100%
+      list-style: none
+      padding: 0
+      margin: 0
+      margin-bottom: 16px
+      line-height: 1.2
+
+      li
+        display: inline-block
+        margin-right: 5px
+
+        a
+          font-size: 0.8125rem
+          font-weight: bold
+          color: $grayColor

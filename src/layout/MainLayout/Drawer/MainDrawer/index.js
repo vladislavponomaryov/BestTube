@@ -1,3 +1,4 @@
+import './style.component.sass'
 import NavGroup from "./NavGroup";
 import menuItems from "../../../../menu-items";
 import Subscriptions from "../../../../components/subscriptions";

@@ -1,7 +1,7 @@
 let initialState = {
 }
 
-const app = (state = initialState, action) => {
+const app = (state = initialState, action:any) => {
 
     switch (action.type) {
         default:
