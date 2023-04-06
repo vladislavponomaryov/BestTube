@@ -1,13 +1,12 @@
 import {configureStore} from "@reduxjs/toolkit";
-import {compose} from "redux";
-import thunkMiddleware from 'redux-thunk';
-import reducers from "./reducers";
+import appReducer from "./slices/app";
+import videoReducer from './slices/video'
 
 let store = configureStore({
-    reducer: reducers,
-    middleware: [thunkMiddleware],
-    // @ts-ignore
-    enhancers: window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
+    reducer: {
+        app: appReducer,
+        video: videoReducer
+    }
 });
 
 export default store;
