@@ -1,6 +1,17 @@
 //Slider styles
 import './style.component.sass';
+import {useSelector} from "react-redux";
+import useMediaQuery from "../../../hooks/useMediaQuery";
+import styled from "styled-components";
 export default function CategorySlider() {
+
+    const mainDrawer = useSelector((state) => state.app.mainDrawer)
+    const mainDrawerBreakpoint = useMediaQuery(`(min-width:1348px)`)
+
+    let componentTopMenu = styled.div.attrs(() => ({className:'top-menu'}))
+    let TopMenu = !mainDrawer && mainDrawerBreakpoint ? componentTopMenu`
+      width: calc(100% - 72px) !important;
+    ` : componentTopMenu``
 
     // slider
     /*(function () {
@@ -195,7 +206,7 @@ export default function CategorySlider() {
 
     return (
         <header className="menu-header">
-            <div className="top-menu">
+            <TopMenu>
                 {/*<div myslider>*/}
                 <div>
                     <div className="wrapper">
@@ -218,7 +229,7 @@ export default function CategorySlider() {
                         </ul>
                     </div>
                 </div>
-            </div>
+            </TopMenu>
         </header>
     )
 }

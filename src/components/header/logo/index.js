@@ -1,7 +1,7 @@
 import logo from "../../../assets/images/logo.svg";
 import {Link} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
-import {isOpenDrawer} from "../../../store/slices/app";
+import {toggleDrawer} from "../../../store/slices/app";
 
 export default function Logotype() {
 
@@ -11,7 +11,7 @@ export default function Logotype() {
 
     function drawerEvent() {
         if (openDrawer === null) openDrawer = true
-        dispatch(isOpenDrawer(!openDrawer))
+        dispatch(toggleDrawer(!openDrawer))
     }
 
     return (

@@ -1,6 +1,7 @@
 import {createSlice} from "@reduxjs/toolkit";
 
 const initialState = {
+    mainDrawer: null,
     openDrawer: null
 }
 
@@ -8,7 +9,13 @@ export const appSlice = createSlice({
     name: 'app',
     initialState,
     reducers: {
-        isOpenDrawer: (state,action) => {
+        isMainDrawer: (state,action) => {
+            return {
+                ...state,
+                mainDrawer: action.payload
+            }
+        },
+        toggleDrawer: (state,action) => {
             return {
                 ...state,
                 openDrawer: action.payload
@@ -17,6 +24,6 @@ export const appSlice = createSlice({
     }
 })
 
-export const {isOpenDrawer} = appSlice.actions
+export const {toggleDrawer, isMainDrawer} = appSlice.actions
 
 export default appSlice.reducer

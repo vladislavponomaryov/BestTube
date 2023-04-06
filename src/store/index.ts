@@ -6,7 +6,8 @@ let store = configureStore({
     reducer: {
         app: appReducer,
         video: videoReducer
-    }
+    },
+    devTools: true
 });
 
 export default store;
