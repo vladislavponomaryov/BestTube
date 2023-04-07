@@ -3,6 +3,7 @@ import './style.component.sass';
 import {useSelector} from "react-redux";
 import useMediaQuery from "../../../hooks/useMediaQuery";
 import styled from "styled-components";
+import {useEffect} from "react";
 export default function CategorySlider() {
 
     const mainDrawer = useSelector((state) => state.app.mainDrawer)
@@ -14,7 +15,7 @@ export default function CategorySlider() {
     ` : componentTopMenu``
 
     // slider
-    /*(function () {
+    useEffect(() => {
         class Slider {
             position = 0
             constructor(mainElement) {
@@ -83,10 +84,17 @@ export default function CategorySlider() {
             }
 
             getActualPosition() {
-                let transformStyle = this.wrapperStyle.getPropertyValue('transform')
-                let matrix = new WebKitCSSMatrix(transformStyle)
-
-                return matrix.m41
+                let view = this.wrapper
+                let xform = 'transform';
+                ['webkit', 'Moz', 'O', 'ms'].every(function (prefix) {
+                    let e = prefix + 'Transform';
+                    if (typeof view.style[e] !== 'undefined') {
+                        xform = e;
+                        return false;
+                    }
+                    return true;
+                });
+                return -view.style[xform].replace(/[^\d.]/g, '')
             }
 
             buttonScroll(e) {
@@ -202,13 +210,13 @@ export default function CategorySlider() {
         }
 
         new Slider('[myslider]')
-    })()*/
+    },[])
 
     return (
         <header className="menu-header">
             <TopMenu>
                 {/*<div myslider>*/}
-                <div>
+                <div myslider={'true'}>
                     <div className="wrapper">
                         <ul>
                             <li className="active">All</li>
