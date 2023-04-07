@@ -1,7 +1,7 @@
 import './style.component.sass'
 import NavGroup from "./NavGroup";
 import menuItems from "../../../../menu-items";
-import Subscriptions from "../../../../components/subscriptions";
+import Subscriptions from "../../../../components/sidebarSubscriptions";
 
 export default function MainDrawer() {
 

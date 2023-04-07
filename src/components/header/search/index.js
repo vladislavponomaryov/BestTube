@@ -1,22 +1,22 @@
+import {useEffect, useState} from "react";
+
 export default function Search() {
 
-    // mobile search
-    /*(function () {
-        document.querySelector('#button-mobile-search').addEventListener('click', () => {
-            let searchBox = document.querySelector('body header .center')
+    let [mobileSearchClass,changeClass] = useState('')
 
-            searchBox.classList.toggle('visible')
+    // mobile search
+    useEffect(()=>{
+        document.querySelector('#button-mobile-search').addEventListener('click', () => {
+            changeClass('visible')
         })
 
         document.querySelector('#button-back').addEventListener('click', () => {
-            let searchBox = document.querySelector('body header .center')
-
-            searchBox.classList.toggle('visible')
+            changeClass('')
         })
-    })()*/
+    },[])
 
     return (
-        <div className="center">
+        <div className={`center ${mobileSearchClass}`}>
             <div className="search">
                 <button id="button-back" className="icon">
                     <span className="_icon-leftBottom"></span>

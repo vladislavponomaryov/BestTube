@@ -4,7 +4,7 @@ export default function Comments() {
 
     let comments = []
     for (let i = 0; i < 3; i++) {
-        comments.push(<Comment/>)
+        comments.push(<Comment key={i}/>)
     }
 
     return (

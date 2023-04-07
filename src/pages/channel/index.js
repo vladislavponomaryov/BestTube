@@ -8,7 +8,7 @@ export default function Channel() {
 
     let categories = []
     for (let i = 1; i <= 4; i++) {
-        categories.push(<Category number={i}/>)
+        categories.push(<Category number={i} key={i}/>)
     }
 
     return (

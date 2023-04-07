@@ -3,20 +3,6 @@ import accountImage from "../../assets/images/userAvatars/2.png";
 
 export default function Video() {
 
-    // videoOpenDescription
-    /*(function () {
-
-        let selector = '.video main .content.video .primary .videoDesc .description'
-
-        if (!document.querySelector(selector)) return
-
-        let mainElement = document.querySelector(selector)
-
-        mainElement.addEventListener('click',() => {
-            mainElement.classList.toggle('mini')
-        })
-    })()*/
-
     return (
         <section>
             <a href="/video-link">

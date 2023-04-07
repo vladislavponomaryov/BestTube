@@ -1,12 +1,14 @@
 import './style.component.sass'
 import Video from "./video";
+import {useEffect} from "react";
+import {useLocation} from "react-router-dom";
 
 export default function VideoContent({videoCount}) {
 
-    // contentLayoutController
-    /*(function () {
-        console.log(1234)
+    const location = useLocation();
 
+    // contentLayoutController
+    useEffect(() => {
         let page = getPageName()
         let selector = `main .content.${page} .videoContent`
 
@@ -57,7 +59,7 @@ export default function VideoContent({videoCount}) {
         }
 
         function getPageName() {
-            if (document.body.classList[0]) return document.body.classList[0]
+            return location.pathname.slice(1)
         }
 
         function getParams() {
@@ -143,7 +145,7 @@ export default function VideoContent({videoCount}) {
                 }
             }
         }
-    })()*/
+    },[])
 
     let videoContent = []
     for (let i = 0; i < videoCount; i++) {
