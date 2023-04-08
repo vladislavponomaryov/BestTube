@@ -1,9 +1,9 @@
 import './style.component.sass'
-import Video from "./video";
+import Item from "./item";
 import {useEffect} from "react";
 import {useLocation} from "react-router-dom";
 
-export default function VideoContent({videoCount}) {
+export default function VideoContent({videoList,videoCount}) {
 
     const location = useLocation();
 
@@ -59,7 +59,8 @@ export default function VideoContent({videoCount}) {
         }
 
         function getPageName() {
-            return location.pathname.slice(1)
+            let url = location.pathname.slice(1)
+            return url ? url : 'home'
         }
 
         function getParams() {
@@ -148,9 +149,17 @@ export default function VideoContent({videoCount}) {
     },[])
 
     let videoContent = []
-    for (let i = 0; i < videoCount; i++) {
-        videoContent.push(<Video key={i}/>)
-    }
+
+    videoContent = videoList.map((item,index) => <Item item={videoList[index]} key={index}/>)
+
+    /*if (videoList) {
+
+    } else {
+        for (let i = 0; i < videoCount; i++) {
+            videoContent.push(<Item key={i}/>)
+        }
+    }*/
+
 
     return (
         <div className="videoContent">

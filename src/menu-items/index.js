@@ -31,7 +31,7 @@ const dashboard = {
                     id: 'subscriptions',
                     title: 'Subscriptions',
                     type: 'item',
-                    url: '/',
+                    url: '/channel',
                     icon: 'subscriptions'
                 }
             ]

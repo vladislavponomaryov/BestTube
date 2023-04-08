@@ -3,8 +3,17 @@ import userAvatar from '../../assets/images/userAvatars/9.png'
 import Comments from "./comments";
 import VideoContent from "../../components/videoContent";
 import {useEffect, useState} from "react";
+import {useLocation} from "react-router-dom";
+import {useSelector} from "react-redux";
 
 export default function Video() {
+
+    let list = useSelector(state => state.video.list)
+
+    // Query params
+    let location = useLocation()
+    let search = location.search !== '' ? location.search : null
+    let videoId = search.slice(search.indexOf('=') + 1) ? search.slice(search.indexOf('=') + 1) : 'qGJLTDxnMs8'
 
     // videoPageHeight
     useEffect(() => {
@@ -49,8 +58,8 @@ export default function Video() {
         }
     },[])
 
-    let [miniClass,changeClass] = useState('')
-
+    // Video description
+    let [miniClass,changeClass] = useState('');
     function descriptionToggle() {
         changeClass(miniClass === '' ? 'mini' : '')
     }
@@ -59,7 +68,7 @@ export default function Video() {
         <div className="content video">
             <div className="primary">
                 <div className="videoPlayer">
-                    <iframe width="100%" height="360" src="https://www.youtube.com/embed/qGJLTDxnMs8"
+                    <iframe width="100%" height="360" src={`https://www.youtube.com/embed/${videoId}`}
                             title="YouTube video player"
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                             allowFullScreen></iframe>
@@ -101,7 +110,7 @@ export default function Video() {
                 </div>
                 <Comments/>
             </div>
-            <VideoContent videoCount={15}/>
+            <VideoContent videoList={list} videoCount={15}/>
         </div>
     )
 }
