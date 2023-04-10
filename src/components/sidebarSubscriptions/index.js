@@ -13,16 +13,16 @@ export default function Subscriptions({item}) {
 
     useEffect(() => {
         console.log(44444)
-        /*videoState.list.map(item => {
+        videoState.list.map(item => {
             // console.log(item.snippet.channelId)
             // if (channelState.list)
             // getChannel(item.snippet.channelId)
-            dispatch(getChannel(item.snippet.channelId))
+            //dispatch(getChannel(item.snippet.channelId))
             // dispatch(addInList(item.snippet.channelId))
-        })*/
-    },[id])
+        })
+    },[videoState.list])
 
-    // console.log(channelState.list)
+    console.log(channelState.list)
 
     const navItem = item.children?.map(item => {
         return <Item key={item.id} item={item}/>

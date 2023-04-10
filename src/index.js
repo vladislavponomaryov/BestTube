@@ -13,11 +13,9 @@ import './assets/style/iconsFont.css';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
-      <Provider store={index}>
-          <BrowserRouter>
-              <Routes />
-          </BrowserRouter>
-      </Provider>
-  </React.StrictMode>
+    <Provider store={index}>
+        <BrowserRouter>
+            <Routes />
+        </BrowserRouter>
+    </Provider>
 );

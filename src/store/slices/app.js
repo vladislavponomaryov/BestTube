@@ -1,7 +1,7 @@
 import {createSlice} from "@reduxjs/toolkit";
 
 const initialState = {
-    mainDrawer: null,
+    mainDrawer: true,
     openDrawer: null
 }
 

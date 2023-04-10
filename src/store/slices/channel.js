@@ -25,15 +25,15 @@ export const getChannel = createAsyncThunk('getChannel', async(channelId, thunkA
 
     if (list.find(item => item.id === channelId)) return
 
-    thunkAPI.dispatch(addInList({id:channelId}))
+    //thunkAPI.dispatch(addInList({id:channelId}))
 
     const response = await api.getChannelData(channelId)
 
-    console.log(`test = `,{id:channelId},response.data.items[0])
+    //console.log(`test = `,{id:channelId},response.data.items[0])
 
-    /*if (response.status === 200) {
+    if (response.status === 200) {
         thunkAPI.dispatch(addInList(response.data.items[0]))
-    }*/
+    }
 
 })
 

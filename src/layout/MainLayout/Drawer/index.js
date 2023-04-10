@@ -21,8 +21,10 @@ const Drawer = () => {
     location = location.pathname === '/video' ? true : false
 
     useEffect(() => {
-        mainDrawer = mainDrawerBreakpoint === true && openDrawer !== null ? openDrawer : mainDrawerBreakpoint
-        dispatch(isMainDrawer(mainDrawer))
+        let test = mainDrawerBreakpoint === true && openDrawer !== null ? openDrawer : mainDrawerBreakpoint
+        if (mainDrawer !== test) {
+            dispatch(isMainDrawer(test))
+        }
     }, [mainDrawerBreakpoint, openDrawer])
 
     let componentSidebar = styled.div.attrs(() => ({className: 'sidebar',}))
