@@ -13,7 +13,10 @@ export default function Video() {
     // Query params
     let location = useLocation()
     let search = location.search !== '' ? location.search : null
-    let videoId = search.slice(search.indexOf('=') + 1) ? search.slice(search.indexOf('=') + 1) : 'qGJLTDxnMs8'
+    let videoId = search.slice(search.indexOf('=') + 1) ? search.slice(search.indexOf('=') + 1) : 'error'
+    let videoItem = list.find(item => item.id === videoId)
+    let videoData = videoItem.snippet
+    let videoStatistics = videoItem.statistics
 
     // videoPageHeight
     useEffect(() => {
@@ -74,11 +77,11 @@ export default function Video() {
                             allowFullScreen></iframe>
                 </div>
                 <div className="videoInfo">
-                    <h1>Blind Woodturner: Turning passion into fine art</h1>
+                    <h1>{videoData.title}</h1>
                     <div>
-                        <span>576,969 views . Oct 8, 2021</span>
+                        <span>{videoStatistics.viewCount} views . {videoData.publishedAt}</span>
                         <div className="buttons">
-                            <button><span className="_icon-liked"></span>1.7 K</button>
+                            <button><span className="_icon-liked"></span>{videoStatistics.likeCount && videoStatistics.likeCount}</button>
                             <button><span className="_icon-DisLiked"></span>0</button>
                             <button><span className="_icon-Share"></span>Share</button>
                             <button><span className="_icon-Save"></span>Save</button>
@@ -91,20 +94,14 @@ export default function Video() {
                         <div className="account-info">
                             <img src={userAvatar} alt="User avatar"/>
                             <div>
-                                <h4>James Gouse</h4>
+                                <h4>{videoData.channelTitle}</h4>
                                 <span>1.2M subscribers</span>
                             </div>
                         </div>
                         <button>Subscribes</button>
                     </div>
                     <div className={`description ${miniClass}`} onClick={descriptionToggle}>
-                        <p>
-                            Chris Fisher, also known as the Blind Woodturner, learned his craft by listening to hundreds
-                            of
-                            hours of YouTube videos and experimenting in his workshop. Now he’s a YouTube creator
-                            himself,
-                            sells his products worldwide, and does demonstrations all around the country.
-                        </p>
+                        <pre>{videoData.description}</pre>
                         <button>Show more</button>
                     </div>
                 </div>

@@ -19,5 +19,13 @@ export const api = {
                 regionCode: 'US'
             }
         })
+    },
+    getChannelData(id) {
+        return instance.get(`/channels`, {
+            params: {
+                part: 'snippet,contentDetails,statistics',
+                id: id
+            }
+        })
     }
 }

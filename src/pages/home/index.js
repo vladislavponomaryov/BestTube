@@ -14,8 +14,7 @@ export default function Home() {
     /*useEffect(() => {
         dispatch(getPopularVideo(32))
     },[])
-
-    console.log(list)*/
+    */
 
     return (
         <div className="content home">

@@ -5,6 +5,7 @@ import Subscriptions from "../../../../components/sidebarSubscriptions";
 
 export default function MainDrawer() {
 
+    // Subscriptions block
     const navGroups = menuItems.children.map((item) => {
 
         if (item.id === 'group-3') return <Subscriptions key={item.id} item={item} />

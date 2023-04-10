@@ -1,18 +1,6 @@
 @import "src/assets/style/variables"
 
 #app
-  background: $backgroundColor4
-  > .sidebar
-    left: -240px
-
-  > main
-    background: $backgroundColor4
-    width: 90%
-    margin-left: 5%
-    margin-right: 5%
-    padding: 24px
-
-#app
   main
     .content.video
       display: flex
@@ -88,18 +76,24 @@
             margin-top: 15px
             margin-left: 64px
             &.mini
-              margin-top: 0
               margin-left: 64px
-              p
-                display: none
+              pre
+                -webkit-line-clamp: inherit
               button
                 display: inherit
                 padding: 3px 0
-            p
+            pre
               color: $whiteColor
               font-size: 14px
               line-height: 1.3
               margin-bottom: 0
+              white-space: pre-line
+              overflow: hidden
+              // многоточие
+              text-overflow: clip
+              display: -webkit-box
+              -webkit-line-clamp: 1
+              -webkit-box-orient: vertical
             button
               color: $grayColor
               text-transform: uppercase
