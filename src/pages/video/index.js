@@ -71,7 +71,7 @@ export default function Video() {
         <div className="content video">
             <div className="primary">
                 <div className="videoPlayer">
-                    <iframe width="100%" height="360" src={`https://www.youtube.com/embed/${videoId}`}
+                    <iframe width="100%" height="360" src={`https://www.youtube.com/embed/${videoId}?autoplay=1`}
                             title="YouTube video player"
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                             allowFullScreen></iframe>

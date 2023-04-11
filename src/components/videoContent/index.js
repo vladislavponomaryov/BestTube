@@ -2,9 +2,13 @@ import './style.component.sass'
 import Item from "./item";
 import {useEffect} from "react";
 import {useLocation} from "react-router-dom";
+import {useDispatch, useSelector} from "react-redux";
+import {getChannelBanner} from "../../store/slices/channel";
 
 export default function VideoContent({videoList,videoCount}) {
 
+    const dispatch = useDispatch()
+    const channels = useSelector(state => state.channel.list)
     const location = useLocation();
 
     // contentLayoutController
@@ -150,7 +154,7 @@ export default function VideoContent({videoList,videoCount}) {
 
     let videoContent = []
 
-    videoContent = videoList.map((item,index) => <Item item={videoList[index]} key={index}/>)
+    videoContent = videoList.map((item,index) => <Item item={videoList[index]} channels={channels} key={index}/>)
 
     /*if (videoList) {
 

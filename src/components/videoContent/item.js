@@ -1,11 +1,12 @@
-import videoImage from "../../assets/images/content/2.png";
-import accountImage from "../../assets/images/userAvatars/2.png";
 import {Link} from "react-router-dom";
 
-export default function Item({item}) {
+export default function Item({item, channels}) {
 
     const itemData = item.snippet
     const statistics = item.statistics
+    let channel = channels.find(channel => channel.id === itemData.channelId)
+
+    //console.log(channel)
 
     return (
         <section>
@@ -16,15 +17,15 @@ export default function Item({item}) {
                 </div>
             </Link>
             <div className="wrapper">
-                <Link className="account" to={`/channel/${itemData.channelId}`}>
-                    <img src={accountImage} alt="Account image"/>
+                <Link className="account" to={`/channel?id=${itemData.channelId}`}>
+                    <img src={channel?.snippet.thumbnails.default.url} alt="Account image"/>
                 </Link>
-                <a className="information" href="/video-link">
+                <Link className="information" to={`/video?id=${item.id}`}>
                     <h4>{itemData.title}</h4>
                     <span className="account-name">{itemData.channelTitle}</span>
                     <span>{statistics.viewCount} Views</span>
                     <span>1 week ago</span>
-                </a>
+                </Link>
             </div>
         </section>
     )

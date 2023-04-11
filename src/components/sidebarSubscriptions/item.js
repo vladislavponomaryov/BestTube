@@ -4,9 +4,9 @@ export default function Item({item}) {
 
     return (
         <li>
-            <Link to={item.url}>
-                {item.img && <img src={item.img} alt="User avatar"/>}
-                <span className='title'>{item.title}</span>
+            <Link to={`/channel?id=${item.snippet.customUrl ? item.snippet.customUrl : item.id}`}>
+                <img src={item.snippet.thumbnails.default.url} alt="User avatar"/>
+                <span className='title'>{item.snippet.title}</span>
             </Link>
         </li>
     )

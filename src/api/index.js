@@ -20,10 +20,18 @@ export const api = {
             }
         })
     },
+    getVideo(id) {
+        return instance.get('/videos',{
+            params: {
+                part: 'snippet,contentDetails,statistics',
+                id: id
+            }
+        })
+    },
     getChannelData(id) {
         return instance.get(`/channels`, {
             params: {
-                part: 'snippet,contentDetails,statistics',
+                part: 'snippet,contentDetails,statistics,brandingSettings',
                 id: id
             }
         })

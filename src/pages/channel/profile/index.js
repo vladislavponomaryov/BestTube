@@ -1,13 +1,17 @@
-import avatar from '../../../assets/images/userAvatars/9.png'
-export default function ChannelProfile() {
+export default function ChannelProfile({channelData,channelStatistics}) {
+
     return (
         <div className="title">
             <div className="profile">
-                <img src={avatar} alt="Channel avatar"/>
+                <img src={channelData.thumbnails.default.url} alt="Channel avatar"/>
                 <div className="information">
-                    <h1>James Gouse</h1>
-                    <span>Channel info 1.2M subscribers</span>
-                    <span>About channel</span>
+                    <h1>{channelData.title}</h1>
+                    <div>
+                        <span>{channelData.customUrl && channelData.customUrl}</span>
+                        <span>{channelStatistics.subscriberCount && channelStatistics.subscriberCount + 'subscribers'}</span>
+                        <span>{channelStatistics.videoCount && channelStatistics.videoCount + 'video'}</span>
+                    </div>
+                    <pre>{channelData.description}</pre>
                 </div>
             </div>
             <button>Subscribes</button>

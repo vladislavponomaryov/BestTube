@@ -81,37 +81,7 @@ const dashboard = {
         {
             id: 'group-3',
             title: 'Subscriptions',
-            type: 'group',
-            children: [
-                {
-                    id: 'James-Gouse',
-                    title: 'James Gouse',
-                    type: 'item',
-                    url: '',
-                    img: img1
-                },
-                {
-                    id: 'Alan-Cooper',
-                    title: 'Alan Cooper',
-                    type: 'item',
-                    url: '',
-                    img: img2
-                },
-                {
-                    id: 'Marcus-Levin',
-                    title: 'Marcus Levin',
-                    type: 'item',
-                    url: '',
-                    img: img3
-                },
-                {
-                    id: 'Alexis-Sears',
-                    title: 'Alexis Sears',
-                    type: 'item',
-                    url: '',
-                    img: img4
-                },
-            ]
+            type: 'group'
         },
         {
             id: 'group-4',
