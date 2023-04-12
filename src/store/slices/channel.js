@@ -534,8 +534,6 @@ const channelSlice = createSlice({
 export const getChannel = createAsyncThunk('getChannel', async(channelId, thunkAPI) => {
     const response = await api.getChannelData(channelId)
 
-    console.log(response)
-
     if (response.status === 200) {
         thunkAPI.dispatch(addInList(response.data.items[0]))
     }
@@ -543,6 +541,9 @@ export const getChannel = createAsyncThunk('getChannel', async(channelId, thunkA
 })
 
 export const getFeatureVideo = createAsyncThunk('getFeatureVideo', async(channelId,thunkAPI) => {
+
+    if (channelId === null) thunkAPI.dispatch(featureVideo(null))
+
     const response = await api.getVideo(channelId)
 
     if (response.status === 200) {

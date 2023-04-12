@@ -6,8 +6,6 @@ export default function Item({item, channels}) {
     const statistics = item.statistics
     let channel = channels.find(channel => channel.id === itemData.channelId)
 
-    //console.log(channel)
-
     return (
         <section>
             <Link to={`/video?id=${item.id}`}>

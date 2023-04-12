@@ -1,11 +1,9 @@
 import './style.component.sass'
-import channelBackground from '../../assets/images/channel-page/channel-background.jpg'
 import ChannelProfile from "./profile";
 import Feature from "./feature";
 import Category from "./category";
 import {useDispatch, useSelector} from "react-redux";
 import {useLocation} from "react-router-dom";
-import {getVideo} from "../../store/slices/video";
 import {getFeatureVideo} from "../../store/slices/channel";
 import {useEffect} from "react";
 
@@ -28,12 +26,13 @@ export default function Channel() {
         categories.push(<Category number={i} key={i}/>)
     }
 
-    const featureId = channelItem.brandingSettings.channel.unsubscribedTrailer
-
-    if (!featureId) featureData = null
-
     useEffect(() => {
+        const featureId = channelItem.brandingSettings.channel.unsubscribedTrailer
         if (featureId) dispatch(getFeatureVideo(featureId))
+
+        return () => {
+            dispatch(getFeatureVideo(null))
+        }
     },[])
 
     return (

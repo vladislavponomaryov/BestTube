@@ -1,5 +1,6 @@
 import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
 import {api} from "../../api";
+import {featureVideo} from "./channel";
 
 const initialState = {
     response: {
@@ -1032,7 +1033,8 @@ const initialState = {
                 "commentCount": "11463"
             }
         }
-    ]
+    ],
+    item: null
 }
 
 const videoSlice = createSlice({
@@ -1043,6 +1045,12 @@ const videoSlice = createSlice({
             return {
                 ...state,
                 list: action.payload
+            }
+        },
+        changeVideo(state,action){
+            return {
+                ...state,
+                item: action.payload
             }
         }
     }
@@ -1057,6 +1065,18 @@ export const getPopularVideo = createAsyncThunk('getPopVideo', async(count, thun
 
 })
 
-export const {changeVideoList} = videoSlice.actions
+export const getVideo = createAsyncThunk('getPopVideo', async(id, thunkAPI) => {
+
+    if (id === null) changeVideo(null)
+
+    const response = await api.getVideo(id)
+
+    if (response.status === 200) {
+        thunkAPI.dispatch(changeVideo(response.data.items[0]))
+    }
+
+})
+
+export const {changeVideoList, changeVideo} = videoSlice.actions
 
 export default videoSlice.reducer
