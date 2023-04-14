@@ -20,9 +20,7 @@ export default function Video() {
     let videoItem = useSelector(state => state.video.item)
 
     useEffect(() => {
-        if (!videoItem) {
-            dispatch(getVideo(videoId))
-        }
+        dispatch(getVideo(videoId))
 
         return () => {
             getVideo(null)

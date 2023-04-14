@@ -509,6 +509,7 @@ const initialState = {
             }
         }
     ],
+    item: null,
     featureVideo: null
 }
 
@@ -522,6 +523,12 @@ const channelSlice = createSlice({
                 list: [...state.list,action.payload]
             }
         },
+        changeItem(state,action){
+            return {
+                ...state,
+                item: action.payload
+            }
+        },
         featureVideo(state,action){
             return {
                 ...state,
@@ -532,6 +539,21 @@ const channelSlice = createSlice({
 })
 
 export const getChannel = createAsyncThunk('getChannel', async(channelId, thunkAPI) => {
+
+    if (channelId === null) {
+        thunkAPI.dispatch(changeItem(null))
+        return
+    }
+
+    const response = await api.getChannelData(channelId)
+
+    if (response.status === 200) {
+        thunkAPI.dispatch(changeItem(response.data.items[0]))
+    }
+
+})
+
+export const getPopChannels = createAsyncThunk('getChannel', async(channelId, thunkAPI) => {
     const response = await api.getChannelData(channelId)
 
     if (response.status === 200) {
@@ -542,7 +564,10 @@ export const getChannel = createAsyncThunk('getChannel', async(channelId, thunkA
 
 export const getFeatureVideo = createAsyncThunk('getFeatureVideo', async(channelId,thunkAPI) => {
 
-    if (channelId === null) thunkAPI.dispatch(featureVideo(null))
+    if (channelId === null) {
+        thunkAPI.dispatch(featureVideo(null))
+        return
+    }
 
     const response = await api.getVideo(channelId)
 
@@ -552,6 +577,6 @@ export const getFeatureVideo = createAsyncThunk('getFeatureVideo', async(channel
 
 })
 
-export const {addInList, featureVideo} = channelSlice.actions
+export const {changeItem, addInList, featureVideo} = channelSlice.actions
 
 export default channelSlice.reducer

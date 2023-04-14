@@ -1,7 +1,7 @@
 import Item from "./item";
 import {useDispatch, useSelector} from "react-redux";
 import {useEffect} from "react";
-import {getChannel} from "../../store/slices/channel";
+import {getPopChannels} from "../../store/slices/channel";
 
 export default function Subscriptions({item}) {
 
@@ -11,9 +11,9 @@ export default function Subscriptions({item}) {
     const channelState = state.channel
 
     useEffect(() => {
-        videoState.list.map((item,index) => {
-            dispatch(getChannel(item.snippet.channelId))
-        })
+        /*videoState.list.map((item,index) => {
+            dispatch(getPopChannels(item.snippet.channelId))
+        })*/
     },[videoState.list])
 
     //console.log(channelState.list)
