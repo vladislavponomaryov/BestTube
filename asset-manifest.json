@@ -1,0 +1,33 @@
+{
+  "files": {
+    "main.css": "/Youtube-clone/static/css/main.b34503aa.css",
+    "main.js": "/Youtube-clone/static/js/main.95b8bece.js",
+    "static/css/441.c4befc43.chunk.css": "/Youtube-clone/static/css/441.c4befc43.chunk.css",
+    "static/js/441.3f0fcc66.chunk.js": "/Youtube-clone/static/js/441.3f0fcc66.chunk.js",
+    "static/css/182.3cbbf638.chunk.css": "/Youtube-clone/static/css/182.3cbbf638.chunk.css",
+    "static/js/182.39be5dd1.chunk.js": "/Youtube-clone/static/js/182.39be5dd1.chunk.js",
+    "static/css/562.db08908b.chunk.css": "/Youtube-clone/static/css/562.db08908b.chunk.css",
+    "static/js/562.5308612c.chunk.js": "/Youtube-clone/static/js/562.5308612c.chunk.js",
+    "static/js/157.d9221956.chunk.js": "/Youtube-clone/static/js/157.d9221956.chunk.js",
+    "static/media/2.png": "/Youtube-clone/static/media/2.a27f528ecda327edb5f0.png",
+    "static/media/9.png": "/Youtube-clone/static/media/9.974cc202bd3b26284310.png",
+    "static/media/10.png": "/Youtube-clone/static/media/10.29a2c0f4dd1e8997685a.png",
+    "static/media/4.png": "/Youtube-clone/static/media/4.360bb68385548a806b9f.png",
+    "static/media/icons.ttf?q2ic9x": "/Youtube-clone/static/media/icons.6f8666a4527f7b0003c1.ttf",
+    "static/media/logo.svg": "/Youtube-clone/static/media/logo.e0041e82847795781eb32000bd37e508.svg",
+    "index.html": "/Youtube-clone/index.html",
+    "main.b34503aa.css.map": "/Youtube-clone/static/css/main.b34503aa.css.map",
+    "main.95b8bece.js.map": "/Youtube-clone/static/js/main.95b8bece.js.map",
+    "441.c4befc43.chunk.css.map": "/Youtube-clone/static/css/441.c4befc43.chunk.css.map",
+    "441.3f0fcc66.chunk.js.map": "/Youtube-clone/static/js/441.3f0fcc66.chunk.js.map",
+    "182.3cbbf638.chunk.css.map": "/Youtube-clone/static/css/182.3cbbf638.chunk.css.map",
+    "182.39be5dd1.chunk.js.map": "/Youtube-clone/static/js/182.39be5dd1.chunk.js.map",
+    "562.db08908b.chunk.css.map": "/Youtube-clone/static/css/562.db08908b.chunk.css.map",
+    "562.5308612c.chunk.js.map": "/Youtube-clone/static/js/562.5308612c.chunk.js.map",
+    "157.d9221956.chunk.js.map": "/Youtube-clone/static/js/157.d9221956.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.b34503aa.css",
+    "static/js/main.95b8bece.js"
+  ]
+}
