@@ -14,7 +14,7 @@ import './assets/style/iconsFont.css';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
     <Provider store={index}>
-        <BrowserRouter>
+        <BrowserRouter basename='/Youtube-clone'>
             <Routes />
         </BrowserRouter>
     </Provider>
