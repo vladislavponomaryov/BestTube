@@ -4,11 +4,12 @@ export default function Item({item, channels}) {
 
     const itemData = item.snippet
     const statistics = item.statistics
+    const videoId = item?.contentDetails?.videoId ? item?.contentDetails?.videoId : item.id
     let channel = channels.find(channel => channel.id === itemData.channelId)
 
     return (
         <section>
-            <Link to={`/video?id=${item.id}`}>
+            <Link to={`/video?id=${videoId}`}>
                 <div className="image">
                     <img src={itemData.thumbnails.high.url} alt="Preview image"/>
                     <div className="videoLength">23:45</div>
@@ -21,7 +22,8 @@ export default function Item({item, channels}) {
                 <Link className="information" to={`/video?id=${item.id}`}>
                     <h4>{itemData.title}</h4>
                     <span className="account-name">{itemData.channelTitle}</span>
-                    <span>{statistics.viewCount} Views</span>
+                    {statistics && statistics.viewCount && <span>{statistics.viewCount} Views</span>}
+
                     <span>1 week ago</span>
                 </Link>
             </div>

@@ -11,9 +11,9 @@ export default function Subscriptions({item}) {
     const channelState = state.channel
 
     useEffect(() => {
-        /*videoState.list.map((item,index) => {
+        videoState.list.map((item,index) => {
             dispatch(getPopChannels(item.snippet.channelId))
-        })*/
+        })
     },[videoState.list])
 
     //console.log(channelState.list)

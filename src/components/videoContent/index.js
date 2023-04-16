@@ -7,6 +7,8 @@ import {getChannelBanner} from "../../store/slices/channel";
 
 export default function VideoContent({videoList,videoCount}) {
 
+    //console.log(videoList)
+
     const dispatch = useDispatch()
     const channels = useSelector(state => state.channel.list)
     const location = useLocation();
@@ -155,15 +157,6 @@ export default function VideoContent({videoList,videoCount}) {
     let videoContent = []
 
     videoContent = videoList.map((item,index) => <Item item={videoList[index]} channels={channels} key={index}/>)
-
-    /*if (videoList) {
-
-    } else {
-        for (let i = 0; i < videoCount; i++) {
-            videoContent.push(<Item key={i}/>)
-        }
-    }*/
-
 
     return (
         <div className="videoContent">

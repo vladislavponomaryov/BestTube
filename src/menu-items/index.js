@@ -1,8 +1,3 @@
-import img1 from '../assets/images/userAvatars/9.png'
-import img2 from '../assets/images/userAvatars/8.png'
-import img3 from '../assets/images/userAvatars/7.png'
-import img4 from '../assets/images/userAvatars/6.png'
-
 const dashboard = {
     id: 'group-full',
     title: '',
@@ -31,7 +26,7 @@ const dashboard = {
                     id: 'subscriptions',
                     title: 'Subscriptions',
                     type: 'item',
-                    url: '/channel',
+                    url: '/',
                     icon: 'subscriptions'
                 }
             ]

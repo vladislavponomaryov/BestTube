@@ -1,6 +1,5 @@
 import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
 import {api} from "../../api";
-import {getVideo} from "./video";
 
 const initialState = {
     list: [
@@ -510,6 +509,9 @@ const initialState = {
         }
     ],
     item: null,
+    sections: null,
+    playlists: null,
+    playlistItems: {},
     featureVideo: null
 }
 
@@ -534,6 +536,27 @@ const channelSlice = createSlice({
                 ...state,
                 featureVideo: action.payload
             }
+        },
+        changeSections(state,action) {
+            return {
+                ...state,
+                sections: action.payload
+            }
+        },
+        changePlaylists(state,action) {
+            return {
+                ...state,
+                playlists: action.payload
+            }
+        },
+        changePlaylistItems(state,action) {
+
+            let playlists = {...state.playlists}
+            let {playlistId,response} = action.payload
+
+            //console.log('data',playlists,{...playlists[0]},playlistId,response)
+
+            state.playlistItems[playlistId] = response
         }
     }
 })
@@ -577,6 +600,311 @@ export const getFeatureVideo = createAsyncThunk('getFeatureVideo', async(channel
 
 })
 
-export const {changeItem, addInList, featureVideo} = channelSlice.actions
+export const getSections = createAsyncThunk('getSections',async(channelId,thunkAPI) => {
+
+    if (channelId === null) {
+        thunkAPI.dispatch(changeSections(null))
+        return
+    }
+
+    const response = await api.getChannelSections(channelId)
+
+    if (response.status === 200) {
+        thunkAPI.dispatch(changeSections(response.data.items))
+    }
+})
+
+export const getPlaylistsInfo = createAsyncThunk('getPlaylistsInfo',async(playlistsId,thunkAPI) => {
+
+    if (playlistsId === null) {
+        thunkAPI.dispatch(changePlaylists(null))
+        return
+    }
+
+    const response = await api.getPlaylistsInfo(playlistsId)
+
+    if (response.status === 200) {
+        thunkAPI.dispatch(changePlaylists(response.data.items))
+    }
+})
+
+export const getPlaylistItems = createAsyncThunk('getPlaylistItems',async(playlistId,thunkAPI) => {
+
+    if (playlistId === null) {
+        thunkAPI.dispatch(changePlaylistItems(null))
+        return
+    }
+
+    /*let response = [
+        {
+            "kind": "youtube#playlistItem",
+            "etag": "QrR8Jb_coGpzZMdl-oTct9xs5w0",
+            "id": "UEwxNDhrQ3ZYazhwQ1dVTXYxUXNVTUMwSzlMVzk0S2RMXy42MTI4Njc2QjM1RjU1MjlG",
+            "snippet": {
+                "publishedAt": "2023-04-09T17:00:27Z",
+                "channelId": "UCZGYJFUizSax-yElQaFDp5Q",
+                "title": "Hayden Christensen | Star Wars Celebration LIVE! 2023",
+                "description": "Watch the interview with Hayden Christensen at Star Wars Celebration LIVE! 2023.",
+                "thumbnails": {
+                    "default": {
+                        "url": "https://i.ytimg.com/vi/4XIv8_RfKko/default.jpg",
+                        "width": 120,
+                        "height": 90
+                    },
+                    "medium": {
+                        "url": "https://i.ytimg.com/vi/4XIv8_RfKko/mqdefault.jpg",
+                        "width": 320,
+                        "height": 180
+                    },
+                    "high": {
+                        "url": "https://i.ytimg.com/vi/4XIv8_RfKko/hqdefault.jpg",
+                        "width": 480,
+                        "height": 360
+                    },
+                    "standard": {
+                        "url": "https://i.ytimg.com/vi/4XIv8_RfKko/sddefault.jpg",
+                        "width": 640,
+                        "height": 480
+                    },
+                    "maxres": {
+                        "url": "https://i.ytimg.com/vi/4XIv8_RfKko/maxresdefault.jpg",
+                        "width": 1280,
+                        "height": 720
+                    }
+                },
+                "channelTitle": "Star Wars",
+                "playlistId": "PL148kCvXk8pCWUMv1QsUMC0K9LW94KdL_",
+                "position": 0,
+                "resourceId": {
+                    "kind": "youtube#video",
+                    "videoId": "4XIv8_RfKko"
+                },
+                "videoOwnerChannelTitle": "Star Wars",
+                "videoOwnerChannelId": "UCZGYJFUizSax-yElQaFDp5Q"
+            },
+            "contentDetails": {
+                "videoId": "4XIv8_RfKko",
+                "videoPublishedAt": "2023-04-09T17:11:12Z"
+            }
+        },
+        {
+            "kind": "youtube#playlistItem",
+            "etag": "d26ngL_PnPsBuF3TN7NFxoA8u5Y",
+            "id": "UEwxNDhrQ3ZYazhwQ1dVTXYxUXNVTUMwSzlMVzk0S2RMXy45NkVENTkxRDdCQUFBMDY4",
+            "snippet": {
+                "publishedAt": "2023-04-09T19:29:24Z",
+                "channelId": "UCZGYJFUizSax-yElQaFDp5Q",
+                "title": "Giancarlo Esposito | Star Wars Celebration LIVE! 2023",
+                "description": "Giancarlo Esposito shares discusses his character and gives words of advice to fans at Star Wars Celebration LIVE! 2023.",
+                "thumbnails": {
+                    "default": {
+                        "url": "https://i.ytimg.com/vi/G017yhKL1Zc/default.jpg",
+                        "width": 120,
+                        "height": 90
+                    },
+                    "medium": {
+                        "url": "https://i.ytimg.com/vi/G017yhKL1Zc/mqdefault.jpg",
+                        "width": 320,
+                        "height": 180
+                    },
+                    "high": {
+                        "url": "https://i.ytimg.com/vi/G017yhKL1Zc/hqdefault.jpg",
+                        "width": 480,
+                        "height": 360
+                    },
+                    "standard": {
+                        "url": "https://i.ytimg.com/vi/G017yhKL1Zc/sddefault.jpg",
+                        "width": 640,
+                        "height": 480
+                    },
+                    "maxres": {
+                        "url": "https://i.ytimg.com/vi/G017yhKL1Zc/maxresdefault.jpg",
+                        "width": 1280,
+                        "height": 720
+                    }
+                },
+                "channelTitle": "Star Wars",
+                "playlistId": "PL148kCvXk8pCWUMv1QsUMC0K9LW94KdL_",
+                "position": 1,
+                "resourceId": {
+                    "kind": "youtube#video",
+                    "videoId": "G017yhKL1Zc"
+                },
+                "videoOwnerChannelTitle": "Star Wars",
+                "videoOwnerChannelId": "UCZGYJFUizSax-yElQaFDp5Q"
+            },
+            "contentDetails": {
+                "videoId": "G017yhKL1Zc",
+                "videoPublishedAt": "2023-04-09T19:36:51Z"
+            }
+        },
+        {
+            "kind": "youtube#playlistItem",
+            "etag": "cnIfuS3VqbNjyLY7a-H0ru6vlVE",
+            "id": "UEwxNDhrQ3ZYazhwQ1dVTXYxUXNVTUMwSzlMVzk0S2RMXy5DMkU4NTY1QUFGQTYwMDE3",
+            "snippet": {
+                "publishedAt": "2023-04-09T10:26:50Z",
+                "channelId": "UCZGYJFUizSax-yElQaFDp5Q",
+                "title": "Rosario Dawson, Natasha Liu Bordizzo and Mary Elizabeth Winstead | Star Wars Celebration LIVE! 2023",
+                "description": "Watch the interview with Rosario Dawson (Ahsoka Tano), Natasha Liu Bordizzo (Sabine Wren) and Mary Elizabeth Winstead (Hera Syndulla)  at Star Wars Celebration Europe 2023.",
+                "thumbnails": {
+                    "default": {
+                        "url": "https://i.ytimg.com/vi/HKzMPVVa50A/default.jpg",
+                        "width": 120,
+                        "height": 90
+                    },
+                    "medium": {
+                        "url": "https://i.ytimg.com/vi/HKzMPVVa50A/mqdefault.jpg",
+                        "width": 320,
+                        "height": 180
+                    },
+                    "high": {
+                        "url": "https://i.ytimg.com/vi/HKzMPVVa50A/hqdefault.jpg",
+                        "width": 480,
+                        "height": 360
+                    },
+                    "standard": {
+                        "url": "https://i.ytimg.com/vi/HKzMPVVa50A/sddefault.jpg",
+                        "width": 640,
+                        "height": 480
+                    },
+                    "maxres": {
+                        "url": "https://i.ytimg.com/vi/HKzMPVVa50A/maxresdefault.jpg",
+                        "width": 1280,
+                        "height": 720
+                    }
+                },
+                "channelTitle": "Star Wars",
+                "playlistId": "PL148kCvXk8pCWUMv1QsUMC0K9LW94KdL_",
+                "position": 2,
+                "resourceId": {
+                    "kind": "youtube#video",
+                    "videoId": "HKzMPVVa50A"
+                },
+                "videoOwnerChannelTitle": "Star Wars",
+                "videoOwnerChannelId": "UCZGYJFUizSax-yElQaFDp5Q"
+            },
+            "contentDetails": {
+                "videoId": "HKzMPVVa50A",
+                "videoPublishedAt": "2023-04-09T10:29:05Z"
+            }
+        },
+        {
+            "kind": "youtube#playlistItem",
+            "etag": "f5BTK7ggHScdPBIQNDg3oC5S1SQ",
+            "id": "UEwxNDhrQ3ZYazhwQ1dVTXYxUXNVTUMwSzlMVzk0S2RMXy4zQzFBN0RGNzNFREFCMjBE",
+            "snippet": {
+                "publishedAt": "2023-04-09T19:22:43Z",
+                "channelId": "UCZGYJFUizSax-yElQaFDp5Q",
+                "title": "Ewan McGregor | Star Wars Celebration LIVE! 2023",
+                "description": "Ewan McGregor stopped by the Star Wars Celebration LIVE! 2023 stage to share a message with fans.",
+                "thumbnails": {
+                    "default": {
+                        "url": "https://i.ytimg.com/vi/h0dkmKIGhYY/default.jpg",
+                        "width": 120,
+                        "height": 90
+                    },
+                    "medium": {
+                        "url": "https://i.ytimg.com/vi/h0dkmKIGhYY/mqdefault.jpg",
+                        "width": 320,
+                        "height": 180
+                    },
+                    "high": {
+                        "url": "https://i.ytimg.com/vi/h0dkmKIGhYY/hqdefault.jpg",
+                        "width": 480,
+                        "height": 360
+                    },
+                    "standard": {
+                        "url": "https://i.ytimg.com/vi/h0dkmKIGhYY/sddefault.jpg",
+                        "width": 640,
+                        "height": 480
+                    },
+                    "maxres": {
+                        "url": "https://i.ytimg.com/vi/h0dkmKIGhYY/maxresdefault.jpg",
+                        "width": 1280,
+                        "height": 720
+                    }
+                },
+                "channelTitle": "Star Wars",
+                "playlistId": "PL148kCvXk8pCWUMv1QsUMC0K9LW94KdL_",
+                "position": 3,
+                "resourceId": {
+                    "kind": "youtube#video",
+                    "videoId": "h0dkmKIGhYY"
+                },
+                "videoOwnerChannelTitle": "Star Wars",
+                "videoOwnerChannelId": "UCZGYJFUizSax-yElQaFDp5Q"
+            },
+            "contentDetails": {
+                "videoId": "h0dkmKIGhYY",
+                "videoPublishedAt": "2023-04-09T19:24:02Z"
+            }
+        },
+        {
+            "kind": "youtube#playlistItem",
+            "etag": "o7qkDMrIGgUbyQwLGzNvA5_jFKI",
+            "id": "UEwxNDhrQ3ZYazhwQ1dVTXYxUXNVTUMwSzlMVzk0S2RMXy4yODlGNEE0NkRGMEEzMEQy",
+            "snippet": {
+                "publishedAt": "2023-04-07T15:30:13Z",
+                "channelId": "UCZGYJFUizSax-yElQaFDp5Q",
+                "title": "Amandla Stenberg and Lee Jung-Jae from The Acolyte | Star Wars Celebration LIVE! 2023",
+                "description": "The Acolyte's Amandla Stenberg and Lee Jung-Jae stop by the LIVE! Stage at Star Wars Celebration Europe 2023 for one of their first Star Wars interviews. The pair discusses their first steps in the galaxy far, far away, and more.",
+                "thumbnails": {
+                    "default": {
+                        "url": "https://i.ytimg.com/vi/jmY3yJwBzzI/default.jpg",
+                        "width": 120,
+                        "height": 90
+                    },
+                    "medium": {
+                        "url": "https://i.ytimg.com/vi/jmY3yJwBzzI/mqdefault.jpg",
+                        "width": 320,
+                        "height": 180
+                    },
+                    "high": {
+                        "url": "https://i.ytimg.com/vi/jmY3yJwBzzI/hqdefault.jpg",
+                        "width": 480,
+                        "height": 360
+                    },
+                    "standard": {
+                        "url": "https://i.ytimg.com/vi/jmY3yJwBzzI/sddefault.jpg",
+                        "width": 640,
+                        "height": 480
+                    },
+                    "maxres": {
+                        "url": "https://i.ytimg.com/vi/jmY3yJwBzzI/maxresdefault.jpg",
+                        "width": 1280,
+                        "height": 720
+                    }
+                },
+                "channelTitle": "Star Wars",
+                "playlistId": "PL148kCvXk8pCWUMv1QsUMC0K9LW94KdL_",
+                "position": 4,
+                "resourceId": {
+                    "kind": "youtube#video",
+                    "videoId": "jmY3yJwBzzI"
+                },
+                "videoOwnerChannelTitle": "Star Wars",
+                "videoOwnerChannelId": "UCZGYJFUizSax-yElQaFDp5Q"
+            },
+            "contentDetails": {
+                "videoId": "jmY3yJwBzzI",
+                "videoPublishedAt": "2023-04-07T15:35:10Z"
+            }
+        }
+    ]
+    thunkAPI.dispatch(changePlaylistItems({playlistId,response}))
+
+    return*/
+
+    let response = await api.getPlaylistItems(playlistId)
+    //console.log(response.data.items)
+
+    if (response.status === 200) {
+        response = response.data.items
+        thunkAPI.dispatch(changePlaylistItems({playlistId,response}))
+    }
+})
+
+export const {changeItem, addInList, featureVideo, changeSections, changePlaylists, changePlaylistItems} = channelSlice.actions
 
 export default channelSlice.reducer

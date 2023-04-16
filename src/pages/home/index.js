@@ -11,7 +11,7 @@ export default function Home() {
     let list = useSelector(state => state.video.list)
 
     useEffect(() => {
-        //dispatch(getPopularVideo(32))
+        dispatch(getPopularVideo(32))
     },[])
 
     return (

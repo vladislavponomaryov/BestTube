@@ -1,4 +1,5 @@
 import axios from "axios";
+import qs from 'qs';
 
 const KEY = 'AIzaSyB-76jg5_R43PsWZLgdpMeIVMv8m3rbJoI'
 
@@ -33,6 +34,33 @@ export const api = {
             params: {
                 part: 'snippet,contentDetails,statistics,brandingSettings',
                 id: id
+            }
+        })
+    },
+    getChannelSections(id) {
+        return instance.get(`/channelSections`, {
+            params: {
+                part: 'contentDetails',
+                channelId: id
+            }
+        })
+    },
+    getPlaylistsInfo(playlistsId) {
+        return instance.get(`/playlists`, {
+            params: {
+                part: 'snippet',
+                id: [...playlistsId]
+            },
+            paramsSerializer: {
+                indexes: null
+            }
+        })
+    },
+    getPlaylistItems(id) {
+        return instance.get(`/playlistItems`, {
+            params: {
+                part: 'snippet,contentDetails',
+                playlistId: id
             }
         })
     }

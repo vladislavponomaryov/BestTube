@@ -1,7 +1,7 @@
 import './style.component.sass'
 import ChannelProfile from "./profile";
 import Feature from "./feature";
-import Category from "./category";
+import Sections from "./sections";
 import {useDispatch, useSelector} from "react-redux";
 import {useLocation} from "react-router-dom";
 import {getChannel, getFeatureVideo} from "../../store/slices/channel";
@@ -43,11 +43,6 @@ export default function Channel() {
         }
     }, [channelItem])
 
-    let categories = []
-    for (let i = 1; i <= 4; i++) {
-        categories.push(<Category number={i} key={i}/>)
-    }
-
     return (
         <>
             {channelItem &&
@@ -70,7 +65,7 @@ export default function Channel() {
                     </header>
                     <div className="list">
                         {featureData && <Feature item={featureData}/>}
-                        {categories}
+                        <Sections id={channelId}/>
                     </div>
                 </div>
             }

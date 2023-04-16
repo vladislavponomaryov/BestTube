@@ -40,6 +40,8 @@ export default function Video() {
         if (!document.querySelector(mainSelector)) return
         if (!document.querySelector(videoPlayerSelector)) return
 
+        console.log('test')
+
         let mainElement = document.querySelector(mainSelector)
         let mainElementStyle = getComputedStyle(mainElement)
         let mainElementWidth = clearPX(mainElementStyle.getPropertyValue('width'))
@@ -73,7 +75,7 @@ export default function Video() {
             videoPlayerBlock.style.height = height + 'px'
 
         }
-    },[])
+    },[videoItem])
 
     // Video description
     let [miniClass,changeClass] = useState('');
