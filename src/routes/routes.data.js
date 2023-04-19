@@ -1,6 +1,6 @@
-import { Channel } from '../components/screens/channel'
-import { Home } from '../components/screens/home'
-import { Video } from '../components/screens/video'
+import { Channel } from 'components/screens/channel'
+import { Home } from 'components/screens/home'
+import { Video } from 'components/screens/video'
 
 export const routes = [
 	{

@@ -1,8 +1,7 @@
+import MainLayout from 'components/layout/MainLayout'
+import VideoContent from 'components/ui/videoContent'
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-
-import VideoContent from '../../../components/ui/videoContent'
-import MainLayout from '../../layout/MainLayout'
 
 import CategorySlider from './categorySlider'
 import './style.component.sass'

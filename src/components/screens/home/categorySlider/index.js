@@ -1,9 +1,8 @@
 //Slider styles
+import useMediaQuery from 'hooks/useMediaQuery'
 import { useEffect } from 'react'
 import { useSelector } from 'react-redux'
 import styled from 'styled-components'
-
-import useMediaQuery from '../../../..//hooks/useMediaQuery'
 
 import './style.component.sass'
 

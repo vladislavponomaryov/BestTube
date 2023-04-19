@@ -1,9 +1,8 @@
+import MainLayout from 'components/layout/MainLayout'
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useLocation } from 'react-router-dom'
-
-import { getChannel, getFeatureVideo } from '../../../store/slices/channel'
-import MainLayout from '../../layout/MainLayout'
+import { getChannel, getFeatureVideo } from 'store/slices/channel'
 
 import Feature from './feature'
 import ChannelProfile from './profile'

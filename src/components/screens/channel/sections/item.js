@@ -1,7 +1,5 @@
-import { useEffect } from 'react'
+import VideoContent from 'components/ui/videoContent'
 import { useDispatch } from 'react-redux'
-
-import VideoContent from '../../../../components/ui/videoContent'
 
 export default function Section({ item, playlistItem }) {
 	let dispatch = useDispatch()

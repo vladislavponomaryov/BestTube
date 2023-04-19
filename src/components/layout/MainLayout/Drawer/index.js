@@ -1,11 +1,9 @@
 import cn from 'clsx'
+import useMediaQuery from 'hooks/useMediaQuery'
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useLocation } from 'react-router-dom'
-
-import useMediaQuery from '../../../../hooks/useMediaQuery'
-
-import { setMainDrawer, toggleDrawer } from '../../../../store/slices/app'
+import { setMainDrawer, toggleDrawer } from 'store/slices/app'
 
 import MainDrawer from './MainDrawer'
 import DrawerFooter from './MainDrawer/DrawerFooter'

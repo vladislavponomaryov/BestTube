@@ -1,4 +1,4 @@
-import userPhoto from '../../../../assets/images/userAvatars/2.png'
+import userPhoto from 'assets/images/userAvatars/2.png'
 
 export default function Comment() {
 	return (

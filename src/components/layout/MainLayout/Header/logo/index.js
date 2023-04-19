@@ -1,8 +1,7 @@
+import logo from 'assets/images/logo.svg'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
-
-import logo from '../../../../../assets/images/logo.svg'
-import { toggleDrawer } from '../../../../../store/slices/app'
+import { toggleDrawer } from 'store/slices/app'
 
 export default function Logotype() {
 	const dispatch = useDispatch()

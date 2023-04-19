@@ -1,8 +1,6 @@
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
-import { getPopChannels } from '../../../store/slices/channel'
-
 import Item from './item'
 
 export default function Subscriptions({ item }) {

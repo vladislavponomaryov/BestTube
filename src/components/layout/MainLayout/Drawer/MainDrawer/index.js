@@ -1,5 +1,5 @@
-import Subscriptions from '../../../../../components/ui/sidebarSubscriptions'
-import menuItems from '../../../../../menu-items'
+import Subscriptions from 'components/ui/sidebarSubscriptions'
+import menuItems from 'menu-items'
 
 import NavGroup from './NavGroup'
 import './style.sass'

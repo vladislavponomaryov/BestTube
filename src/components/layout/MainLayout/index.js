@@ -1,8 +1,7 @@
 import cn from 'clsx'
+import useMediaQuery from 'hooks/useMediaQuery'
 import { useSelector } from 'react-redux'
-import { Outlet, useLocation } from 'react-router-dom'
-
-import useMediaQuery from '../../../hooks/useMediaQuery'
+import { useLocation } from 'react-router-dom'
 
 import Drawer from './Drawer'
 import Header from './Header'

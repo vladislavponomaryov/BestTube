@@ -1,11 +1,10 @@
+import userAvatar from 'assets/images/userAvatars/9.png'
+import MainLayout from 'components/layout/MainLayout'
+import VideoContent from 'components/ui/videoContent'
 import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useLocation } from 'react-router-dom'
-
-import userAvatar from '../../../assets/images/userAvatars/9.png'
-import VideoContent from '../../../components/ui/videoContent'
-import { getVideo } from '../../../store/slices/video'
-import MainLayout from '../../layout/MainLayout'
+import { getVideo } from 'store/slices/video'
 
 import Comments from './comments'
 import './style.component.sass'

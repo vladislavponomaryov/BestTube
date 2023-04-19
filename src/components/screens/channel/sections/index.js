@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-
-import { getPlaylistItems, getPlaylists, getPlaylistsInfo, getSections } from '../../../../store/slices/channel'
+import { getPlaylistItems, getPlaylistsInfo, getSections } from 'store/slices/channel'
 
 import Section from './item'
 

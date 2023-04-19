@@ -1,4 +1,4 @@
-import userImage from '../../../../assets/images/userAvatars/4.png'
+import userImage from 'assets/images/userAvatars/4.png'
 
 import Comment from './comment'
 

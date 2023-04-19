@@ -1,4 +1,4 @@
-import userAvatar from '../../../../../assets/images/userAvatars/10.png'
+import userAvatar from 'assets/images/userAvatars/10.png'
 
 export default function HeaderNavigation() {
 	return (
