@@ -5,6 +5,7 @@ import { useLocation } from 'react-router-dom'
 import userAvatar from '../../../assets/images/userAvatars/9.png'
 import VideoContent from '../../../components/ui/videoContent'
 import { getVideo } from '../../../store/slices/video'
+import MainLayout from '../../layout/MainLayout'
 
 import Comments from './comments'
 import './style.component.sass'
@@ -83,7 +84,7 @@ export const Video = () => {
 	}
 
 	return (
-		<>
+		<MainLayout>
 			{videoItem && (
 				<div className='content video'>
 					<div className='primary'>
@@ -144,6 +145,6 @@ export const Video = () => {
 					<VideoContent videoList={list} videoCount={15} />
 				</div>
 			)}
-		</>
+		</MainLayout>
 	)
 }

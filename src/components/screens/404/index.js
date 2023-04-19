@@ -1,5 +1,9 @@
-import { useRouteError } from 'react-router-dom'
+import MainLayout from '../../layout/MainLayout'
 
-export const ErrorPage = () => {
-	return <h1>404. Not found</h1>
+export const NotFound = () => {
+	return (
+		<MainLayout>
+			<h1>404. Not found</h1>
+		</MainLayout>
+	)
 }

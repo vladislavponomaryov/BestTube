@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useLocation } from 'react-router-dom'
 
 import { getChannel, getFeatureVideo } from '../../../store/slices/channel'
+import MainLayout from '../../layout/MainLayout'
 
 import Feature from './feature'
 import ChannelProfile from './profile'
@@ -45,7 +46,7 @@ export const Channel = () => {
 	}, [channelItem])
 
 	return (
-		<>
+		<MainLayout>
 			{channelItem && (
 				<div className='content channel'>
 					<img src={channelItem.brandingSettings.image.bannerExternalUrl + '=w2000-fcrop64=1,00005a57ffffa5a8-k-c0xffffffff-no-nd-rj'} alt='Channel background' />
@@ -68,6 +69,6 @@ export const Channel = () => {
 					</div>
 				</div>
 			)}
-		</>
+		</MainLayout>
 	)
 }
