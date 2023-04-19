@@ -1,10 +1,8 @@
+import { useAuth } from 'hooks/useAuth'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
-
-import { useAuth } from '../hooks/useAuth'
+import { routes } from 'routes/routes.data'
 
 import { NotFound } from '../components/screens/404'
-
-import { routes } from './routes.data'
 
 export default function Router() {
 	const { isAuth } = useAuth()
