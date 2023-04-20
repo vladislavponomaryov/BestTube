@@ -6,13 +6,15 @@
 	"singleQuote": true,
 	"jsxSingleQuote": true,
 	"arrowParens": "avoid",
-	"printWidth": 180,
+	"printWidth": 150,
 	"importOrderParserPlugins": ["typescript", "jsx", "decorators-legacy"],
 	"plugins": ["@trivago/prettier-plugin-sort-imports"],
 	"importOrder": [
 		"<THIRD_PARTY_MODULES>",
 		"/hooks/",
-		"/pages/",
+		"/layout/",
+		"/screens/",
+		"/ui/",
 		"^../(.*)",
 		"^./(.*)",
 		"/module.scss/"
