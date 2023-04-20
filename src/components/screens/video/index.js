@@ -1,37 +1,33 @@
 import userAvatar from 'assets/images/userAvatars/9.png'
-import MainLayout from 'components/layout/MainLayout'
-import VideoContent from 'components/ui/videoContent'
 import { useEffect, useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { useLocation } from 'react-router-dom'
-import { getVideo } from 'store/slices/video'
+import { useQuery } from 'react-query'
+import { useSelector } from 'react-redux'
+import { useLocation, useNavigate } from 'react-router-dom'
+import VideoService from 'services/video.service'
+
+import MainLayout from 'components/layout/MainLayout'
+
+import VideoContent from 'components/ui/videoContent'
 
 import Comments from './comments'
 import './style.component.sass'
 
 export const Video = () => {
 	let videoData, videoStatistics
-	let dispatch = useDispatch()
-	let list = useSelector(state => state.video.list)
 
 	// Query params
-	let location = useLocation()
-	let search = location.search !== '' ? location.search : null
-	let videoId = search.slice(search.indexOf('=') + 1) ? search.slice(search.indexOf('=') + 1) : 'error'
-	let videoItem = useSelector(state => state.video.item)
+	const { search } = useLocation()
+	const navigate = useNavigate()
+	const list = useSelector(state => state.video.list)
+	let videoId = search.slice(search.indexOf('=') + 1) ? search.slice(search.indexOf('=') + 1) : navigate('/')
 
-	useEffect(() => {
-		dispatch(getVideo(videoId))
-
-		return () => {
-			getVideo(null)
+	useQuery(['get video'], () => VideoService.getVideo(videoId), {
+		select: ({ data }) => {
+			console.log(data)
+			videoData = data.items[0].snippet
+			videoStatistics = data.items[0].statistics
 		}
-	}, [])
-
-	if (videoItem) {
-		videoData = videoItem.snippet
-		videoStatistics = videoItem.statistics
-	}
+	})
 
 	// videoPageHeight
 	useEffect(() => {
@@ -40,8 +36,6 @@ export const Video = () => {
 
 		if (!document.querySelector(mainSelector)) return
 		if (!document.querySelector(videoPlayerSelector)) return
-
-		console.log('test')
 
 		let mainElement = document.querySelector(mainSelector)
 		let mainElementStyle = getComputedStyle(mainElement)
@@ -74,7 +68,7 @@ export const Video = () => {
 			mainElement.style.height = height + 'px'
 			videoPlayerBlock.style.height = height + 'px'
 		}
-	}, [videoItem])
+	}, [videoData])
 
 	// Video description
 	let [miniClass, changeClass] = useState('')
@@ -84,7 +78,7 @@ export const Video = () => {
 
 	return (
 		<MainLayout>
-			{videoItem && (
+			{videoData && (
 				<div className='content video'>
 					<div className='primary'>
 						<div className='videoPlayer'>
