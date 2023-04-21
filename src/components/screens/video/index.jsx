@@ -13,17 +13,15 @@ import Comments from './comments'
 import './style.component.sass'
 
 export const Video = () => {
-	let videoData, videoStatistics
-
-	// Query params
 	const { search } = useLocation()
 	const navigate = useNavigate()
 	const list = useSelector(state => state.video.list)
-	let videoId = search.slice(search.indexOf('=') + 1) ? search.slice(search.indexOf('=') + 1) : navigate('/')
+	let videoData,
+		videoStatistics,
+		videoId = search.slice(search.indexOf('=') + 1) ? search.slice(search.indexOf('=') + 1) : navigate('/')
 
-	useQuery(['get video'], () => VideoService.getVideo(videoId), {
-		select: ({ data }) => {
-			console.log(data)
+	useQuery(['get video'], () => VideoService.getById(videoId), {
+		onSuccess: ({ data }) => {
 			videoData = data.items[0].snippet
 			videoStatistics = data.items[0].statistics
 		}
@@ -71,9 +69,9 @@ export const Video = () => {
 	}, [videoData])
 
 	// Video description
-	let [miniClass, changeClass] = useState('')
+	let [miniClass, setMiniClass] = useState('')
 	function descriptionToggle() {
-		changeClass(miniClass === '' ? 'mini' : '')
+		setMiniClass(miniClass === '' ? 'mini' : '')
 	}
 
 	return (
