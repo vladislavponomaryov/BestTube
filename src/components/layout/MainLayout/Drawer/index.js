@@ -14,12 +14,12 @@ import styles from './style.module.scss'
 const Drawer = () => {
 	/* Sidebar */
 	const dispatch = useDispatch()
-	const state = useSelector(state => state.app)
+	const state = useSelector(state => state.app) // TODO: provider
 	const isOpenDrawer = state.openDrawer
 	let isMainDrawer = state.mainDrawer
 	const isDesktopBreakpoint = useMediaQuery(`(min-width:1348px)`)
 	let { pathname } = useLocation()
-	let isVideoPage = pathname === '/video'
+	let isVideoPage = pathname === '/video' // TODO: refactor
 
 	useEffect(() => {
 		let drawerState = isDesktopBreakpoint && isOpenDrawer !== null ? isOpenDrawer : isDesktopBreakpoint

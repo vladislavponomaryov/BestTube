@@ -12,14 +12,16 @@ class VideoService {
 			.then(data => data?.data?.items[0])
 	}
 	async getPopular(count) {
-		return instance.get(`/videos`, {
-			params: {
-				part: 'snippet,contentDetails,statistics',
-				maxResults: count,
-				chart: 'mostPopular',
-				regionCode: 'US'
-			}
-		})
+		return instance
+			.get(`/videos`, {
+				params: {
+					part: 'snippet,contentDetails,statistics',
+					maxResults: count,
+					chart: 'mostPopular',
+					regionCode: 'US'
+				}
+			})
+			.then(data => data?.data?.items)
 	}
 }
 

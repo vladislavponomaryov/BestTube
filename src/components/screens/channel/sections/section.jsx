@@ -1,4 +1,4 @@
-import Playlist from 'components/screens/channel/sections/playlist'
+import Playlist from 'components/ui/playlist'
 
 export default function Section({ section }) {
 	const playlistId = section?.contentDetails?.playlists

@@ -7,6 +7,8 @@ import VideoService from 'services/video.service'
 
 import MainLayout from 'components/layout/MainLayout'
 
+import videoPageHeight from 'components/screens/video/videoPageHeight'
+
 import VideoContent from 'components/ui/videoContent'
 
 import Comments from './comments'
@@ -16,57 +18,16 @@ export const Video = () => {
 	const { search } = useLocation()
 	const navigate = useNavigate()
 	const list = useSelector(state => state.video.list)
-	let videoData,
-		videoStatistics,
-		videoId = search.slice(search.indexOf('=') + 1) ? search.slice(search.indexOf('=') + 1) : navigate('/')
+	const id = search.slice(search.indexOf('=') + 1) ? search.slice(search.indexOf('=') + 1) : navigate('/')
 
-	useQuery(['get video'], () => VideoService.getById(videoId), {
-		onSuccess: ({ data }) => {
-			videoData = data.items[0].snippet
-			videoStatistics = data.items[0].statistics
-		}
-	})
+	const { data: video } = useQuery(`video${id}`, () => VideoService.getById(id))
 
-	// videoPageHeight
+	let sn = video?.snippet,
+		st = video?.statistics
+
 	useEffect(() => {
-		let mainSelector = 'main .content .primary iframe'
-		let videoPlayerSelector = 'main .content .primary .videoPlayer'
-
-		if (!document.querySelector(mainSelector)) return
-		if (!document.querySelector(videoPlayerSelector)) return
-
-		let mainElement = document.querySelector(mainSelector)
-		let mainElementStyle = getComputedStyle(mainElement)
-		let mainElementWidth = clearPX(mainElementStyle.getPropertyValue('width'))
-		let videoPlayerBlock = document.querySelector(videoPlayerSelector)
-
-		new ResizeObserver(entries => {
-			// We wrap it in requestAnimationFrame to avoid this error - ResizeObserver loop limit exceeded
-			window.requestAnimationFrame(() => {
-				if (!Array.isArray(entries) || !entries.length) {
-					return
-				}
-				getParams()
-				changeHeight()
-			})
-		}).observe(mainElement)
-
-		function clearPX(element) {
-			return +element.slice(0, element.length - 2)
-		}
-
-		function getParams() {
-			mainElementStyle = getComputedStyle(mainElement)
-			mainElementWidth = clearPX(mainElementStyle.getPropertyValue('width'))
-		}
-
-		function changeHeight() {
-			let height = (mainElementWidth / 100) * 56
-
-			mainElement.style.height = height + 'px'
-			videoPlayerBlock.style.height = height + 'px'
-		}
-	}, [videoData])
+		videoPageHeight()
+	}, [sn])
 
 	// Video description
 	let [miniClass, setMiniClass] = useState('')
@@ -76,29 +37,29 @@ export const Video = () => {
 
 	return (
 		<MainLayout>
-			{videoData && (
+			{sn && (
 				<div className='content video'>
 					<div className='primary'>
 						<div className='videoPlayer'>
 							<iframe
 								width='100%'
 								height='360'
-								src={`https://www.youtube.com/embed/${videoId}?autoplay=1`}
+								src={`https://www.youtube.com/embed/${id}?autoplay=1`}
 								title='YouTube video player'
 								allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share'
 								allowFullScreen
 							></iframe>
 						</div>
 						<div className='videoInfo'>
-							<h1>{videoData.title && videoData.title}</h1>
+							<h1>{sn.title && sn.title}</h1>
 							<div>
 								<span>
-									{videoStatistics.viewCount} views . {videoData.publishedAt}
+									{st.viewCount} views . {sn.publishedAt}
 								</span>
 								<div className='buttons'>
 									<button>
 										<span className='_icon-liked'></span>
-										{videoStatistics.likeCount && videoStatistics.likeCount}
+										{st.likeCount && st.likeCount}
 									</button>
 									<button>
 										<span className='_icon-DisLiked'></span>0
@@ -120,14 +81,14 @@ export const Video = () => {
 								<div className='account-info'>
 									<img src={userAvatar} alt='User avatar' />
 									<div>
-										<h4>{videoData.channelTitle}</h4>
+										<h4>{sn.channelTitle}</h4>
 										<span>1.2M subscribers</span>
 									</div>
 								</div>
 								<button>Subscribes</button>
 							</div>
 							<div className={`description ${miniClass}`} onClick={descriptionToggle}>
-								<pre>{videoData.description}</pre>
+								<pre>{sn.description}</pre>
 								<button>Show more</button>
 							</div>
 						</div>

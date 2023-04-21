@@ -540,44 +540,7 @@ const initialState = {
 const channelSlice = createSlice({
 	name: 'channel',
 	initialState,
-	reducers: {
-		addInList(state, action) {
-			return {
-				...state,
-				list: [...state.list, action.payload]
-			}
-		},
-		changeItem(state, action) {
-			return {
-				...state,
-				item: action.payload
-			}
-		},
-		featureVideo(state, action) {
-			return {
-				...state,
-				featureVideo: action.payload
-			}
-		},
-		changeSections(state, action) {
-			return {
-				...state,
-				sections: action.payload
-			}
-		},
-		changePlaylists(state, action) {
-			return {
-				...state,
-				playlists: action.payload
-			}
-		},
-		changePlaylistItems(state, action) {
-			let playlists = { ...state.playlists }
-			let { playlistId, response } = action.payload
-
-			state.playlistItems[playlistId] = response
-		}
-	}
+	reducers: {}
 })
 
 export const getChannel = createAsyncThunk('getChannel', async (channelId, thunkAPI) => {

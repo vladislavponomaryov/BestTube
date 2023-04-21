@@ -2,14 +2,14 @@ import { useSelector } from 'react-redux'
 
 import MainLayout from 'components/layout/MainLayout'
 
+import CategorySlider from 'components/screens/home/categorySlider'
+
 import VideoContent from 'components/ui/videoContent'
 
-import CategorySlider from './categorySlider'
 import './style.component.sass'
 
 export const Home = () => {
-	/*const { data } = useQuery(['get popular video'], () => VideoService.getPopularVideos(32))
-	const list = data?.data?.items*/
+	//const { data: list } = useQuery(['get popular video'], () => VideoService.getPopular(32))
 
 	const list = useSelector(state => state.video.list)
 

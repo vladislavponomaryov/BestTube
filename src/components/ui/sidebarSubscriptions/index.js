@@ -1,4 +1,3 @@
-import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
 import Item from './item'
@@ -9,11 +8,15 @@ export default function Subscriptions({ item }) {
 	const videoState = state.video
 	const channelState = state.channel
 
-	useEffect(() => {
-		/*videoState.list.map((item,index) => {
-            dispatch(getPopChannels(item.snippet.channelId))
-        })*/
-	}, [videoState.list])
+	// TODO: refactor query sidebarSubscriptions
+
+	/*useEffect(() => {
+		videoState.list.map(item => {
+			const { data: list } = useQuery(['get popular video'], () => ChannelService.getById(item.snippet.channelId))
+			return list
+			//dispatch(getPopChannels(item.snippet.channelId))
+		})
+	}, [videoState.list])*/
 
 	//console.log(channelState.list)
 

@@ -13,6 +13,7 @@ import './style.component.sass'
 export const Channel = () => {
 	const { search } = useLocation()
 	const navigate = useNavigate()
+	/*TODO: create provider ID*/
 	const id = search.slice(search.indexOf('=') + 1) ? search.slice(search.indexOf('=') + 1) : navigate('/')
 
 	const { data: channel } = useQuery(`channel${id}`, () => ChannelService.getById(id))

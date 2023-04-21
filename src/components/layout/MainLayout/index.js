@@ -13,7 +13,7 @@ const MainLayout = ({ children }) => {
 	const isMainDrawer = useSelector(state => state.app.mainDrawer)
 	const isDesktopBreakpoint = useMediaQuery(`(min-width:1348px)`)
 	const { pathname } = useLocation()
-	const isVideoPage = pathname === '/video'
+	const isVideoPage = pathname === '/video' // TODO: refactor
 
 	return (
 		<div id={'app'} className={cn({ [styles.appVideoPage]: isVideoPage })}>

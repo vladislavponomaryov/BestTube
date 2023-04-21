@@ -1,10 +1,11 @@
 import userAvatar from 'assets/images/userAvatars/10.png'
-import Button from 'components/ui/button/Button'
 import { useAuth } from 'hooks/useAuth'
 import { useNavigate } from 'react-router-dom'
 
+import Button from 'components/ui/button/Button'
+
 export default function HeaderNavigation() {
-	const { isAuth } = useAuth()
+	const { isAuth } = useAuth() // TODO: auth
 	const navigate = useNavigate()
 
 	return (
