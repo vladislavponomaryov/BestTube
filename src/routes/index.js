@@ -1,13 +1,14 @@
-import { NotFound } from 'components/screens/404'
 import { useAuth } from 'hooks/useAuth'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import { routes } from 'routes/routes.data'
+
+import { NotFound } from 'components/screens/404'
 
 export default function Router() {
 	const { isAuth } = useAuth()
 
 	return (
-		<BrowserRouter>
+		<BrowserRouter basename='/Youtube-clone'>
 			<Routes>
 				{routes.map(route => {
 					if (route.isAuth && !isAuth) {
