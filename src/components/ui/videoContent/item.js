@@ -16,7 +16,7 @@ export default function Item({ item, channels }) {
 			</Link>
 			<div className='wrapper'>
 				<Link className='account' to={`/channel?id=${sn.channelId}`}>
-					<img src={channel?.snippet.thumbnails.default.url} alt='Account image' />
+					<img src={sn.thumbnails.default.url} alt='Account image' />
 				</Link>
 				<Link className='information' to={`/video?id=${item.id}`}>
 					<h4>{sn.title}</h4>

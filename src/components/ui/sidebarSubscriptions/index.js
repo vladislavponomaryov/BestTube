@@ -1,28 +1,23 @@
-import { useDispatch, useSelector } from 'react-redux'
+import { useSelector } from 'react-redux'
 
 import Item from './item'
 
 export default function Subscriptions({ item }) {
-	const dispatch = useDispatch()
 	const state = useSelector(state => state)
 	const videoState = state.video
-	const channelState = state.channel
+	const channelState = state.channel.list
 
 	// TODO: refactor query sidebarSubscriptions
 
-	/*useEffect(() => {
-		videoState.list.map(item => {
-			const { data: list } = useQuery(['get popular video'], () => ChannelService.getById(item.snippet.channelId))
-			return list
-			//dispatch(getPopChannels(item.snippet.channelId))
-		})
-	}, [videoState.list])*/
-
-	//console.log(channelState.list)
-
-	const channelBar = channelState.list?.map((item, index) => {
-		return <Item key={index} item={item} />
+	const channelBar = videoState?.list.map((item, index) => {
+		const id = item.snippet.channelId
+		return <Item key={index} id={id} />
 	})
+
+	/*const channelBar = channelState?.map((item, index) => {
+		const id = item?.snippet?.channelId
+		return <Item key={index} id={id} item={item} />
+	})*/
 
 	return (
 		<div>

@@ -1,6 +1,4 @@
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
-
-import { api } from '../../api'
+import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
 	list: [
@@ -529,12 +527,7 @@ const initialState = {
 				}
 			}
 		}
-	],
-	item: null,
-	sections: null,
-	playlists: null,
-	playlistItems: {},
-	featureVideo: null
+	]
 }
 
 const channelSlice = createSlice({
@@ -542,81 +535,5 @@ const channelSlice = createSlice({
 	initialState,
 	reducers: {}
 })
-
-export const getChannel = createAsyncThunk('getChannel', async (channelId, thunkAPI) => {
-	if (channelId === null) {
-		thunkAPI.dispatch(changeItem(null))
-		return
-	}
-
-	const response = await api.getChannelData(channelId)
-
-	if (response.status === 200) {
-		thunkAPI.dispatch(changeItem(response.data.items[0]))
-	}
-})
-
-export const getPopChannels = createAsyncThunk('getChannel', async (channelId, thunkAPI) => {
-	const response = await api.getChannelData(channelId)
-
-	if (response.status === 200) {
-		thunkAPI.dispatch(addInList(response.data.items[0]))
-	}
-})
-
-export const getFeatureVideo = createAsyncThunk('getFeatureVideo', async (channelId, thunkAPI) => {
-	if (channelId === null) {
-		thunkAPI.dispatch(featureVideo(null))
-		return
-	}
-
-	const response = await api.getVideo(channelId)
-
-	if (response.status === 200) {
-		thunkAPI.dispatch(featureVideo(response.data.items[0]))
-	}
-})
-
-export const getSections = createAsyncThunk('getSections', async (channelId, thunkAPI) => {
-	if (channelId === null) {
-		thunkAPI.dispatch(changeSections(null))
-		return
-	}
-
-	const response = await api.getChannelSections(channelId)
-
-	if (response.status === 200) {
-		thunkAPI.dispatch(changeSections(response.data.items))
-	}
-})
-
-export const getPlaylistsInfo = createAsyncThunk('getPlaylistsInfo', async (playlistsId, thunkAPI) => {
-	if (playlistsId === null) {
-		thunkAPI.dispatch(changePlaylists(null))
-		return
-	}
-
-	const response = await api.getPlaylistsInfo(playlistsId)
-
-	if (response.status === 200) {
-		thunkAPI.dispatch(changePlaylists(response.data.items))
-	}
-})
-
-export const getPlaylistItems = createAsyncThunk('getPlaylistItems', async (playlistId, thunkAPI) => {
-	if (playlistId === null) {
-		thunkAPI.dispatch(changePlaylistItems(null))
-		return
-	}
-
-	let response = await api.getPlaylistItems(playlistId)
-
-	if (response.status === 200) {
-		response = response.data.items
-		thunkAPI.dispatch(changePlaylistItems({ playlistId, response }))
-	}
-})
-
-export const { changeItem, addInList, featureVideo, changeSections, changePlaylists, changePlaylistItems } = channelSlice.actions
 
 export default channelSlice.reducer

@@ -25,7 +25,7 @@ export default function CategorySlider() {
 	return (
 		<header className='menu-header'>
 			<TopMenu>
-				<div myslider>
+				<div myslider='true'>
 					<div className='wrapper'>
 						<ul>
 							<li className='active'>All</li>
