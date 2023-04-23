@@ -36,6 +36,6 @@ next-env.d.ts
 
 node_modules
 package-lock.json
-react/build
+source/react/build
 .idea
-react/public
+source/react/public

@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<title>Title</title>
+	</head>
+	<body>
+		<style>
+			html,
+			body {
+				margin: 0;
+				padding: 0;
+				overflow: hidden;
+				background: #181818;
+			}
+
+			body {
+				display: flex;
+				justify-content: center;
+				align-items: center;
+			}
+
+			iframe {
+				border: 0;
+				height: 100vh;
+				width: 100%;
+				transition: 1s;
+			}
+
+			.layoutController {
+				position: fixed;
+				right: 0;
+				top: 10%;
+				z-index: 44;
+				background: rgba(0, 0, 0, 0.8);
+				border-radius: 10px 0 0 10px;
+				text-align: center;
+				font-family: Arial;
+			}
+
+			.menu {
+				transition: 0.3s;
+			}
+
+			.menu.hide {
+				display: none;
+			}
+
+			h6 {
+				text-align: center;
+				color: rgba(255, 255, 255, 0.5);
+				margin: 5px 0;
+				font-size: 13px;
+			}
+
+			ul {
+				list-style: none;
+				padding: 0;
+				margin: 0;
+			}
+
+			li {
+				padding: 3px;
+				text-align: center;
+				color: rgba(255, 255, 255, 0.8);
+				text-transform: capitalize;
+			}
+
+			li.active {
+				color: rgba(255, 255, 255, 1);
+				background: rgba(255, 255, 255, 0.3);
+			}
+
+			li:hover {
+				background: rgba(255, 255, 255, 0.3);
+				cursor: pointer;
+			}
+
+			button {
+				display: inline-block;
+				color: #fff;
+				text-align: center;
+				font-size: 12px;
+				background: rgba(255, 255, 255, 0.3);
+				border-radius: 5px;
+			}
+		</style>
+
+		<div class="layoutController">
+			<div class="menu">
+				<h6>Pages:</h6>
+				<ul class="pages">
+					<li class="active">home</li>
+					<li>channel</li>
+					<li>video</li>
+				</ul>
+				<h6>Screen:</h6>
+				<ul class="screen">
+					<li>large</li>
+					<li>desktop</li>
+					<li>medium</li>
+					<li>small</li>
+					<li>extra</li>
+				</ul>
+			</div>
+		</div>
+
+		<iframe src="build/home/index.html"></iframe>
+
+		<script>
+			;(function () {
+				let selector = '.layoutController'
+
+				if (!document.querySelector(selector)) return
+
+				let mainElement = document.querySelector(selector)
+				let pagesElements = mainElement.querySelectorAll('.pages li')
+				let screenElements = mainElement.querySelectorAll('.screen li')
+
+				pagesElements.forEach(element => {
+					// Назначаем элементам pages событие
+					element.addEventListener('click', event => {
+						let element = event.target
+						changeIframePath(element.innerHTML)
+						removeOtherElementClassActive(pagesElements)
+						addClassActive(element)
+					})
+				})
+
+				screenElements.forEach(element => {
+					// Назначаем элементам screen событие
+					element.addEventListener('click', event => {
+						let element = event.target
+						changeScreenSize(element.innerHTML)
+						removeOtherElementClassActive(screenElements)
+						addClassActive(element)
+					})
+				})
+
+				function changeScreenSize(size) {
+					let iframe = document.querySelector('iframe')
+
+					if (size === 'large') iframe.style.width = 1700 + 'px'
+					if (size === 'desktop') iframe.style.width = 1400 + 'px'
+					if (size === 'medium') iframe.style.width = 982 + 'px'
+					if (size === 'small') iframe.style.width = 605 + 'px'
+					if (size === 'extra') iframe.style.width = 425 + 'px'
+				}
+
+				function addClassActive(element) {
+					element.classList.value = 'active'
+				}
+
+				function removeOtherElementClassActive(elements) {
+					elements.forEach(element => {
+						element.classList.value = ''
+					})
+				}
+
+				function changeIframePath(page) {
+					let src = `./build/${page}/index.html`
+					document.querySelector('iframe').src = src
+				}
+			})()
+		</script>
+	</body>
+</html>
