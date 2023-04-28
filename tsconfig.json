@@ -22,6 +22,7 @@
 			"@/styles/*": ["styles/*"],
 			"@/shared/*": ["shared/*"],
 			"@/hooks/*": ["hooks/*"],
+			"@/providers/*": ["providers/*"],
 			"@/services/*": ["services/*"],
 			"@/utils/*": ["utils/*"],
 			"@/assets/*": ["assets/*"],

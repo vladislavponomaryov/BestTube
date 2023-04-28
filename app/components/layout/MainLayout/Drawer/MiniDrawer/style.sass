@@ -1,0 +1,64 @@
+@import "react/src../../../../assets/style/variables"
+
+.sidebar
+  width: $asideMini
+
+  .mini-guide
+    margin-top: 4px
+
+    ul
+      display: flex
+      flex-direction: column
+
+      li
+        a
+          display: flex
+          padding: 16px 0 14px
+          flex-direction: column
+          align-items: center
+          box-sizing: border-box
+          font-size: 0.625rem
+          color: $whiteColor
+
+          span
+            margin-bottom: 4px
+
+// Работает до 1348
+@media screen and (max-width: 1348px)
+  $asideMini: 72px
+
+  #app
+    > .sidebar
+        width: $asideMini
+        background: $backgroundColor3
+
+// Работает до 792
+@media screen and (max-width: 792px)
+  $asideWidth: 0
+  $navigationHeight: 48px
+
+  #app
+    > div.sidebar
+      bottom: 0
+      top: inherit
+      width: 100% !important
+      border-top: 1px solid $borderColor
+      height: auto
+      padding: 0
+      margin-top: 0
+      nav
+        .mini-guide
+          ul
+            flex-direction: row
+            align-items: center
+            li
+              flex: 0 0 25%
+              a
+                padding: 0
+                height: $navigationHeight
+                display: flex
+                justify-content: center
+                span
+                  margin: 0
+                  position: relative
+                  top: 2px
