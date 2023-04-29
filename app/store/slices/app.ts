@@ -5,7 +5,7 @@ const initialState = {
 	isOpenDrawer: null,
 }
 
-export const appSlice = createSlice({
+const appSlice = createSlice({
 	name: 'app',
 	initialState,
 	reducers: {

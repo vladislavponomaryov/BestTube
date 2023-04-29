@@ -1,17 +1,15 @@
 import cn from 'clsx'
-import MainDrawer from 'components/layout/MainLayout/Drawer/MainDrawer'
-import DrawerFooter from 'components/layout/MainLayout/Drawer/MainDrawer/DrawerFooter'
 import MiniDrawer from 'components/layout/MainLayout/Drawer/MiniDrawer/MiniDrawer'
 import useMediaQuery from 'hooks/useMediaQuery'
 import { useRouter } from 'next/router'
 import { FC, useEffect } from 'react'
 
+import MainDrawer from '@/components/layout/MainLayout/Drawer/MainDrawer'
+import Index from '@/components/layout/MainLayout/Drawer/MainDrawer/Footer'
+import styles from '@/components/layout/MainLayout/Drawer/style.module.sass'
+
 import { useActions } from '@/hooks/useActions'
 import { useApp } from '@/hooks/useApp'
-
-import styles from 'components/layout/MainLayout/Drawer/style.module.scss'
-
-import 'components/layout/MainLayout/Drawer/style.component.sass'
 
 const Drawer: FC = () => {
 	const { isMainDrawer, isOpenDrawer } = useApp()
@@ -28,13 +26,13 @@ const Drawer: FC = () => {
 	}, [isDesktopBreakpoint, isOpenDrawer])
 
 	useEffect(() => {
-		isDesktopBreakpoint ? dispatch(toggleDrawer(true)) : dispatch(toggleDrawer(false))
+		isDesktopBreakpoint ? setIsOpenDrawer(true) : setIsOpenDrawer(false)
 	}, [])
 
 	return (
 		<>
 			<div
-				className={cn(`sidebar`, {
+				className={cn(styles.sidebar, {
 					[styles.mobileDrawer]: !isDesktopBreakpoint || (isDesktopBreakpoint && !isMainDrawer),
 					[styles.isVideoPage]: isVideoPage,
 				})}
@@ -43,7 +41,7 @@ const Drawer: FC = () => {
 					{isMainDrawer ? (
 						<>
 							<MainDrawer />
-							<DrawerFooter />
+							<Index />
 						</>
 					) : (
 						<MiniDrawer />

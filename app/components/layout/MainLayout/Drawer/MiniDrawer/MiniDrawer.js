@@ -1,4 +1,4 @@
-import 'components/layout/MainLayout/Drawer/MiniDrawer/style.sass'
+import '@/components/layout/MainLayout/Drawer/MiniDrawer/style.module.sass'
 
 export default function MiniDrawer() {
 	return (

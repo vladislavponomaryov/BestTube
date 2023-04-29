@@ -1,5 +1,5 @@
-import Home from '@/screens/home/Home'
+import { Home } from '@/screens/home'
 
-export default function HomePage() {
-	return <Home />
+export default function HomePage(props) {
+	return <Home {...props} />
 }

@@ -10,3 +10,5 @@ let store = configureStore({
 })
 
 export type TypeRootState = ReturnType<typeof store.getState>
+
+export default store
