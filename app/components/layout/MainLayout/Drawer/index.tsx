@@ -15,8 +15,8 @@ const Drawer: FC = () => {
 	const { isMainDrawer, isOpenDrawer } = useApp()
 	const { setIsMainDrawer, setIsOpenDrawer } = useActions()
 	const isDesktopBreakpoint = useMediaQuery(`(min-width:1348px)`)
-	let { asPath } = useRouter()
-	let isVideoPage = asPath === 'video' // TODO: refactor
+	let { pathname } = useRouter()
+	let isVideoPage = pathname === '/video'
 
 	useEffect(() => {
 		let drawerState = isDesktopBreakpoint && isOpenDrawer !== null ? isOpenDrawer : isDesktopBreakpoint

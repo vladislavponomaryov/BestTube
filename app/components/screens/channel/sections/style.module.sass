@@ -1,0 +1,49 @@
+@import "@/assets/style/variables"
+
+
+.category
+  border-top: 1px solid $borderColor
+
+  .title
+      display: flex
+      align-items: center
+      color: $grayColor
+      font-size: 16px
+      font-weight: bold
+
+  h4
+    font-size: 16px
+    color: $whiteColor
+    font-weight: bold
+    padding: 17px 0 8px
+    margin-right: 22px
+
+  span
+    &:before
+      font-size: 22px
+      color: $grayColor
+      position: relative
+      margin-right: 5px
+
+.videoContent
+  //margin: 0px -2px
+  //padding: 24px 0
+
+  section
+    margin: 0 2px
+
+    .wrapper
+      .account
+        display: none
+
+      .information
+        h4
+          padding: 0
+          margin-bottom: 14px
+          font-size: 14px
+          overflow: hidden
+          // многоточие
+          text-overflow: ellipsis
+          display: -webkit-box
+          -webkit-line-clamp: 2
+          -webkit-box-orient: vertical

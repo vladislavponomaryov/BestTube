@@ -1,16 +1,9 @@
-import React from 'react'
+const VideoPageHeight = (mainElement, videoPlayerElement) => {
+	if (!mainElement) return
+	if (!videoPlayerElement) return
 
-const VideoPageHeight = () => {
-	let mainSelector = 'main .content .primary iframe'
-	let videoPlayerSelector = 'main .content .primary .videoPlayer'
-
-	if (!document.querySelector(mainSelector)) return
-	if (!document.querySelector(videoPlayerSelector)) return
-
-	let mainElement = document.querySelector(mainSelector)
 	let mainElementStyle = getComputedStyle(mainElement)
 	let mainElementWidth = clearPX(mainElementStyle.getPropertyValue('width'))
-	let videoPlayerBlock = document.querySelector(videoPlayerSelector)
 
 	new ResizeObserver(entries => {
 		// We wrap it in requestAnimationFrame to avoid this error - ResizeObserver loop limit exceeded
@@ -36,7 +29,7 @@ const VideoPageHeight = () => {
 		let height = (mainElementWidth / 100) * 56
 
 		mainElement.style.height = height + 'px'
-		videoPlayerBlock.style.height = height + 'px'
+		videoPlayerElement.style.height = height + 'px'
 	}
 }
 

@@ -21,7 +21,7 @@ export default function Logotype() {
 			<button id='button-guide' className='icon' onClick={() => drawerEvent()}>
 				<span className='_icon-hamburger'></span>
 			</button>
-			<Link href='/' className='button-logo'>
+			<Link href={{ pathname: '/' }} className='button-logo'>
 				<div className={style.logo}>
 					<Image src={logo} alt='Logotype Youtube' />
 				</div>

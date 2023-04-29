@@ -1,4 +1,6 @@
+import cn from 'clsx'
 import Link from 'next/link'
+import { useRouter } from 'next/router'
 
 import styles from '@/components/ui/videoContent/style.module.sass'
 
@@ -7,11 +9,17 @@ export default function Item({ item, channels }) {
 		st = item.statistics
 	const videoId = item?.contentDetails?.videoId ? item?.contentDetails?.videoId : item.id
 	let channel = channels.find(channel => channel.id === sn.channelId)
+	const { pathname } = useRouter()
 
 	return (
-		<section className={styles.section}>
-			<Link href={`/video?id=${videoId}`}>
-				<div className={styles.imageBlock}>
+		<section
+			className={cn(styles.section, {
+				[styles['videoSection']]: pathname === '/video',
+				[styles['channelSection']]: pathname === '/channel',
+			})}
+		>
+			<Link href={{ pathname: '/video', query: { id: videoId } }} className={styles.imageBlock}>
+				<div>
 					<img src={sn.thumbnails.high.url} className={styles.image} alt='Preview image' />
 					<div className={styles.videoLength}>23:45</div>
 				</div>

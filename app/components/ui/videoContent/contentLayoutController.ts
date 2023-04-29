@@ -1,13 +1,7 @@
-import React from 'react'
+const ContentLayoutController = (page, element) => {
+	if (!element) return
 
-const ContentLayoutController = url => {
-	let page = getPageName()
-
-	let selector = `main .content.${page} .videoContent`
-
-	if (!document.querySelector(selector)) return
-
-	let mainContainer = document.querySelector(selector)
+	let mainContainer = element
 	let mainContainerStyle = getComputedStyle(mainContainer)
 	let mainContainerWidth = clearPX(mainContainerStyle.getPropertyValue('width'))
 	let currentCW, largeCW, desktopCW, mediumCW, smallCW, extraSmallCW
@@ -51,10 +45,6 @@ const ContentLayoutController = url => {
 		return +element.slice(0, element.length - 2)
 	}
 
-	function getPageName() {
-		return url?.slice(1) ? url.slice(1) : 'home'
-	}
-
 	function getParams() {
 		mainContainerStyle = getComputedStyle(mainContainer)
 		mainContainerWidth = clearPX(mainContainerStyle.getPropertyValue('width'))
@@ -82,32 +72,31 @@ const ContentLayoutController = url => {
 
 			if (page === 'home') {
 				if (currentCW === largeCW || currentCW === mediumCW) {
-					additional = 'main .content .videoContent section:last-child, main .content section:nth-child(31) {display: none}'
+					additional = '.videoContent section:last-child, .videoContent section:nth-child(31) {display: none}'
 				}
 			}
 
 			if (page === 'channel') {
 				if (currentCW === desktopCW) {
-					additional = 'main .content .videoContent section:last-child {display: none}'
+					additional = '.videoContent section:last-child {display: none}'
 				}
 
 				if (currentCW === mediumCW) {
-					additional = 'main .content .videoContent section:last-child, main .content .videoContent section:nth-child(4) {display: none}'
+					additional = '.videoContent section:last-child, .videoContent section:nth-child(4) {display: none}'
 				}
 
 				if (currentCW === smallCW) {
-					additional =
-						'main .content .videoContent section:nth-child(3), main .content .videoContent section:nth-child(4), .videoContent section:last-child {display: none}'
+					additional = '.videoContent section:nth-child(3), .videoContent section:nth-child(4), .videoContent section:last-child {display: none}'
 				}
 
 				if (currentCW === extraSmallCW) {
 					additional =
-						'main .content .videoContent {flex-direction: column} main .content .videoContent section:nth-child(4), .videoContent section:last-child {display: none !important}'
+						'.videoContent {flex-direction: column} .videoContent section:nth-child(4), .videoContent section:last-child {display: none !important}'
 				}
 			}
 
 			addStyles(`
-            main .content .videoContent section {flex: 1 0 calc(${100 / quantityElements}% - 16px - 0.01px)}${additional}`)
+            .videoContent section {flex: 1 0 calc(${100 / quantityElements}% - 16px - 0.01px)}${additional}`)
 		}
 	}
 

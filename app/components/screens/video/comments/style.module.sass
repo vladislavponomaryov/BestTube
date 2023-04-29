@@ -1,0 +1,74 @@
+@import "@/assets/style/variables"
+
+.comment
+  border-top: 1px solid $borderColor
+  padding: 24px 0
+  .info
+    display: flex
+    > span
+      color: $whiteColor
+      font-size: 16px
+      margin-right: 28px
+    button
+      display: flex
+      align-items: center
+      font-size: 14px
+      font-weight: bold
+      color: $whiteColor
+      span
+        font-size: 24px
+        padding-right: 8px
+  .add
+    padding: 24px 0 32px
+    img
+      width: 40px
+      height: 40px
+      border-radius: 50%
+      margin-right: 16px
+    input
+      width: calc(100% - 100px)
+      background: transparent
+      outline: none
+      border: 0
+      border-bottom: 1px solid $borderColor
+      padding: 0
+      padding-bottom: 4px
+      color: $whiteColor
+      &:active,&:focus,&:target
+        border-bottom: 1px solid $whiteColor
+  .list
+    padding: 0 40px 16px 0
+    display: flex
+    flex-direction: column
+    .item
+      display: flex
+      img
+        width: 40px
+        height: 40px
+        border-radius: 50%
+        margin-right: 16px
+      > div
+        .header
+          span:first-child
+            color: $whiteColor
+            font-size: 13px
+            font-weight: bold
+          span:last-child
+            color: $grayColor
+            font-size: 12px
+        p
+          font-size: 14px
+          color: $whiteColor
+        .buttons
+          display: flex
+          button
+            display: flex
+            color: $grayColor
+            font-size: 12px
+            text-transform: uppercase
+            span
+              font-weight: 500
+              font-size: 17px
+              margin-right: 6px
+              &:before
+                color: $grayColor

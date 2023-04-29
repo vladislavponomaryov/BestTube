@@ -1,8 +1,11 @@
 import React from 'react'
 import { useQuery } from 'react-query'
-import PlaylistService from 'services/playlist.service'
 
-import VideoContent from 'components/ui/videoContent'
+import styles from '@/screens/channel/sections/style.module.sass'
+
+import VideoContent from '@/ui/videoContent'
+
+import PlaylistService from '@/services/playlist.service'
 
 const Playlists = ({ id }) => {
 	const { data: playlist } = useQuery(`playlist${id}`, () => PlaylistService.getById(id))
@@ -12,7 +15,7 @@ const Playlists = ({ id }) => {
 		<>
 			{playlist && playlistItems && (
 				<>
-					<div className='title'>
+					<div className={styles.title}>
 						<h4>{playlist.snippet.title}</h4>
 						<span className='_icon-play'></span>PLAY ALL
 					</div>
