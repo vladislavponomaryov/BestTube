@@ -16,13 +16,14 @@
     main
       width: calc(100% - $asideMini)
       margin-left: $asideMini
-      .content
-        .menu-header
-          display: none
+      > header
+        display: none
     &.full-guide
       main
         margin-left: 0
         width: 100%
+    .sidebar
+      background: $backgroundColor3
 
 // Работает до 792
 @media screen and (max-width: 792px)

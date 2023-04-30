@@ -12,7 +12,7 @@ export default function HeaderNavigation() {
 	const { push } = useRouter()
 
 	return (
-		<nav className={styles.end}>
+		<nav className={cn('end', styles.end)}>
 			<button className={cn('icon', styles.buttonSearchMicro)}>
 				<span className='_icon-search'></span>
 			</button>

@@ -1,3 +1,5 @@
+@import '@/assets/style/variables';
+
 .appVideoPage {
 	background: #181818 !important;
 }
@@ -13,4 +15,25 @@
 .mobileDesktop {
 	margin-left: 72px !important;
 	width: calc(100% - 72px) !important;
+}
+
+.main {
+	flex: 0 0 auto;
+	min-height: calc(100vh - $headerHeight);
+	background: $black;
+	z-index: 8;
+	margin-left: $asideWidth;
+	margin-top: $headerHeight;
+	width: calc(100% - $asideWidth);
+
+	header .top-menu {
+		width: calc(100% - $asideMini);
+	}
+
+	@media screen and (max-width: 792px) {
+		margin-left: 0;
+		margin-right: 0;
+		width: 100%;
+		padding-top: 0;
+	}
 }

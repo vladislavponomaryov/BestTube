@@ -50,7 +50,7 @@ export default function CategorySlider() {
 		<header className={styles.menuHeader}>
 			<div
 				className={cn(styles.topMenu, {
-					[styles.mobileWidth]: !isMainDrawer && mainDrawerBreakpoint,
+					[styles.mobileWidth]: !isMainDrawer,
 				})}
 			>
 				<div ref={ref} className={styles.myslider}>

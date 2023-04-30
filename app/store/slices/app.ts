@@ -13,7 +13,7 @@ const appSlice = createSlice({
 			state.isMainDrawer = action.payload
 		},
 		setIsOpenDrawer: (state, action) => {
-			state.isMainDrawer = action.payload
+			state.isOpenDrawer = action.payload
 		},
 	},
 })

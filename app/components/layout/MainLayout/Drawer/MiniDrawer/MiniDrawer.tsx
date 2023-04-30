@@ -1,8 +1,8 @@
-import '@/components/layout/MainLayout/Drawer/MiniDrawer/style.module.sass'
+import styles from '@/components/layout/MainLayout/Drawer/MiniDrawer/style.module.sass'
 
 export default function MiniDrawer() {
 	return (
-		<div className='mini-guide'>
+		<div className={styles.miniGuide}>
 			<ul>
 				<li>
 					<a href='/'>

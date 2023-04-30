@@ -18,7 +18,7 @@ export default function Search() {
 	}, [])*/
 
 	return (
-		<div className={cn(styles.center, [mobileSearchClass])}>
+		<div className={cn('center', styles.center, [mobileSearchClass])}>
 			<div className={styles.search}>
 				<button className={cn('icon', styles.buttonBack)}>
 					<span className='_icon-leftBottom'></span>

@@ -1,3 +1,4 @@
+import cn from 'clsx'
 import Image from 'next/image'
 import Link from 'next/link'
 
@@ -13,11 +14,15 @@ export default function Logotype() {
 	const { setIsOpenDrawer } = useActions()
 
 	function drawerEvent() {
-		setIsOpenDrawer(!isOpenDrawer)
+		if (isOpenDrawer === null) {
+			setIsOpenDrawer(false)
+		} else {
+			setIsOpenDrawer(!isOpenDrawer)
+		}
 	}
 
 	return (
-		<div className={style.start}>
+		<div className={cn('start', style.start)}>
 			<button id='button-guide' className='icon' onClick={() => drawerEvent()}>
 				<span className='_icon-hamburger'></span>
 			</button>

@@ -26,7 +26,6 @@ export const Video = () => {
 		st = video?.statistics
 
 	useEffect(() => {
-		debugger
 		videoPageHeight(mainElement.current, videoPlayerElement.current)
 	}, [sn])
 

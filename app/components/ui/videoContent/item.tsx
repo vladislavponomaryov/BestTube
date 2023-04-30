@@ -21,7 +21,7 @@ export default function Item({ item, channels }) {
 			<Link href={{ pathname: '/video', query: { id: videoId } }} className={styles.imageBlock}>
 				<div>
 					<img src={sn.thumbnails.high.url} className={styles.image} alt='Preview image' />
-					<div className={styles.videoLength}>23:45</div>
+					{/*<div className={styles.videoLength}>23:45</div>*/}
 				</div>
 			</Link>
 			<div className={styles.wrapper}>
