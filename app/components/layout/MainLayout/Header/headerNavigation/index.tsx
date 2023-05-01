@@ -1,13 +1,14 @@
 import userAvatar from 'assets/images/userAvatars/10.png'
 import cn from 'clsx'
-import Button from 'components/ui/button/Button'
 import { useAuth } from 'hooks/useAuth'
 import Image from 'next/image'
 import { useRouter } from 'next/router'
 
 import styles from '@/components/layout/MainLayout/Header/headerNavigation/style.module.sass'
 
-export default function HeaderNavigation() {
+import Button from '@/ui/button/Button'
+
+const HeaderNavigation = () => {
 	const { isAuth } = useAuth() // TODO: auth
 	const { push } = useRouter()
 
@@ -30,10 +31,12 @@ export default function HeaderNavigation() {
 					<Image className={styles.userAvatar} src={userAvatar} alt='User avatar' />
 				</button>
 			) : (
-				<Button classname={'button-user'} handler={() => push('/login')}>
+				<Button classname={'button-user'} clickHandler={() => push('/login')}>
 					Login
 				</Button>
 			)}
 		</nav>
 	)
 }
+
+export default HeaderNavigation

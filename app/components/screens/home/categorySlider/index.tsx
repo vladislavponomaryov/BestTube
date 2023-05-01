@@ -2,7 +2,8 @@ import cn from 'clsx'
 import useMediaQuery from 'hooks/useMediaQuery'
 import { useEffect, useRef } from 'react'
 
-import slider from '@/components/screens/home/categorySlider/slider'
+import slider from '@/screens/home/categorySlider/slider'
+
 import styles from '@/components/screens/home/categorySlider/style.module.sass'
 
 import { useApp } from '@/hooks/useApp'
@@ -25,10 +26,10 @@ const sliderItemsData = [
 	'User Interface design',
 ]
 
-export default function CategorySlider() {
+const CategorySlider = () => {
 	const { isMainDrawer } = useApp()
 	const mainDrawerBreakpoint = useMediaQuery(`(min-width:1348px)`)
-	const ref = useRef()
+	const ref = useRef(null)
 
 	const sliderItems = sliderItemsData.map((item, index) => {
 		return (
@@ -36,6 +37,7 @@ export default function CategorySlider() {
 				className={cn(styles.li, {
 					[styles.active]: index === 0,
 				})}
+				key={index}
 			>
 				{item}
 			</li>
@@ -62,3 +64,5 @@ export default function CategorySlider() {
 		</header>
 	)
 }
+
+export default CategorySlider

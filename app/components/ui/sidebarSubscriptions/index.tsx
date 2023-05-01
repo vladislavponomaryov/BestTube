@@ -1,14 +1,20 @@
+import { FC } from 'react'
+
 import styles from '@/components/layout/MainLayout/Drawer/MainDrawer/style.module.sass'
 
 import Item from '@/ui/sidebarSubscriptions/item'
 
 import { projectData } from '@/services/data.services'
 
-export default function Subscriptions({ item }) {
+interface SubscriptionsItem {
+	item: {
+		title: string
+	}
+}
+
+const Subscriptions: FC<SubscriptionsItem> = ({ item }) => {
 	const videoState = projectData.video
 	//const channelState = state.channel.list
-
-	// TODO: refactor query sidebarSubscriptions
 
 	const channelBar = videoState?.map((item, index) => {
 		const id = item.snippet.channelId
@@ -27,3 +33,5 @@ export default function Subscriptions({ item }) {
 		</div>
 	)
 }
+
+export default Subscriptions

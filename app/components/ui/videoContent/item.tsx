@@ -1,14 +1,20 @@
 import cn from 'clsx'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
+import { FC } from 'react'
 
 import styles from '@/components/ui/videoContent/style.module.sass'
 
-export default function Item({ item, channels }) {
+interface Item {
+	item: any
+	channels: any
+}
+
+const Item: FC<Item> = ({ item, channels }) => {
 	const sn = item.snippet,
 		st = item.statistics
 	const videoId = item?.contentDetails?.videoId ? item?.contentDetails?.videoId : item.id
-	let channel = channels.find(channel => channel.id === sn.channelId)
+	let channel = channels.find((channel: any) => channel.id === sn.channelId)
 	const { pathname } = useRouter()
 
 	return (
@@ -39,3 +45,5 @@ export default function Item({ item, channels }) {
 		</section>
 	)
 }
+
+export default Item

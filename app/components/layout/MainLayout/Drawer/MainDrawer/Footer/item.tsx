@@ -3,12 +3,12 @@ import React, { FC } from 'react'
 
 import styles from '@/components/layout/MainLayout/Drawer/MainDrawer/Footer/style.module.sass'
 
-type TFooterItem = {
+interface Item {
 	name: string
 	href: string
 }
 
-const Item: FC<TFooterItem> = ({ name, href }) => {
+const Item: FC<Item> = ({ name, href }) => {
 	return (
 		<li className={styles.li}>
 			<Link href={href} className={styles.a}>

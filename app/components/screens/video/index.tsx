@@ -17,8 +17,8 @@ export const Video = () => {
 	const { query } = useRouter()
 	const id = query?.id
 	const list = projectData.video
-	const mainElement = useRef()
-	const videoPlayerElement = useRef()
+	const mainElement = useRef(null)
+	const videoPlayerElement = useRef(null)
 
 	const { data: video } = useQuery(`video${id}`, () => VideoService.getById(id))
 
@@ -33,9 +33,9 @@ export const Video = () => {
 	let [miniClass, setMiniClass] = useState(false)
 
 	return (
-		<>
+		<div className={styles.content}>
 			{sn && (
-				<div className={styles.content}>
+				<>
 					<div className={styles.primary}>
 						<div className={styles.videoPlayer} ref={videoPlayerElement}>
 							<iframe
@@ -92,9 +92,9 @@ export const Video = () => {
 						</div>
 						<Comments />
 					</div>
-					<VideoContent videoList={list} videoCount={15} />
-				</div>
+					<VideoContent videoList={list} />
+				</>
 			)}
-		</>
+		</div>
 	)
 }

@@ -1,6 +1,6 @@
 import cn from 'clsx'
 import { useRouter } from 'next/router'
-import { useEffect, useRef } from 'react'
+import { FC, useEffect, useRef } from 'react'
 
 import '@/components/ui/videoContent/style.module.sass'
 import styles from '@/components/ui/videoContent/style.module.sass'
@@ -10,13 +10,17 @@ import Item from '@/ui/videoContent/item'
 
 import { projectData } from '@/services/data.services'
 
-export default function VideoContent({ videoList, videoCount }) {
+interface VideoContent {
+	videoList: any
+}
+
+const VideoContent: FC<VideoContent> = ({ videoList }) => {
 	const { pathname } = useRouter()
 	const channels = projectData.channel
 	const cssClass = pathname?.slice(1) ? pathname?.slice(1) : 'home'
-	const videoElementRef = useRef()
+	const videoElementRef = useRef(null)
 
-	let videoContent = videoList.map((item, index) => <Item item={videoList[index]} channels={channels} key={index} />)
+	let videoContent = videoList.map((item: any, index: any) => <Item item={videoList[index]} channels={channels} key={index} />)
 
 	useEffect(() => {
 		contentLayoutController(cssClass, videoElementRef.current)
@@ -28,3 +32,5 @@ export default function VideoContent({ videoList, videoCount }) {
 		</div>
 	)
 }
+
+export default VideoContent

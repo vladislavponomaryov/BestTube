@@ -6,7 +6,7 @@ import MainProvider from '@/providers/MainProvider'
 
 export default function App({ Component, pageProps }: AppProps) {
 	return (
-		<MainProvider Component={Component}>
+		<MainProvider>
 			<Component {...pageProps} />
 		</MainProvider>
 	)

@@ -1,8 +1,13 @@
 import Link from 'next/link'
+import { FC } from 'react'
 
 import styles from '@/components/layout/MainLayout/Drawer/MainDrawer/style.module.sass'
 
-export default function NavItem({ item }) {
+interface NavItem {
+	item: any
+}
+
+const NavItem: FC<NavItem> = ({ item }) => {
 	let icon = item.icon ? '_icon-' + item.icon : false
 
 	return (
@@ -14,3 +19,5 @@ export default function NavItem({ item }) {
 		</li>
 	)
 }
+
+export default NavItem

@@ -1,5 +1,7 @@
 import { Home } from '@/screens/home'
 
-export default function HomePage(props) {
+const HomePage = (props: {}) => {
 	return <Home {...props} />
 }
+
+export default HomePage

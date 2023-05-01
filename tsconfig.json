@@ -27,6 +27,8 @@
 			"@/utils/*": ["utils/*"],
 			"@/assets/*": ["assets/*"],
 			"@/configs/*": ["configs/*"],
+			"@/interface/*": ["interface/*"],
+			"@/types/*": ["types/*"],
 			"@/store/*": ["store/*"]
 		}
 	},

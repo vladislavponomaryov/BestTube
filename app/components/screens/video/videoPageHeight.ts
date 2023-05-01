@@ -1,4 +1,4 @@
-const VideoPageHeight = (mainElement, videoPlayerElement) => {
+const VideoPageHeight = (mainElement: any, videoPlayerElement: any) => {
 	if (!mainElement) return
 	if (!videoPlayerElement) return
 
@@ -16,7 +16,7 @@ const VideoPageHeight = (mainElement, videoPlayerElement) => {
 		})
 	}).observe(mainElement)
 
-	function clearPX(element) {
+	function clearPX(element: any) {
 		return +element.slice(0, element.length - 2)
 	}
 

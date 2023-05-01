@@ -1,10 +1,15 @@
 import Link from 'next/link'
+import { FC } from 'react'
 import { useQuery } from 'react-query'
 import ChannelService from 'services/channel.service'
 
 import styles from '@/components/layout/MainLayout/Drawer/MainDrawer/style.module.sass'
 
-export default function Item({ id, item }) {
+interface Item {
+	id: string
+}
+
+const Item: FC<Item> = ({ id }) => {
 	const { data: channel } = useQuery(`channel${id}`, () => ChannelService.getById(id))
 
 	//const channel = item
@@ -20,3 +25,5 @@ export default function Item({ id, item }) {
 		</li>
 	)
 }
+
+export default Item

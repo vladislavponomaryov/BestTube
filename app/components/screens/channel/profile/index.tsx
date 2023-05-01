@@ -1,8 +1,13 @@
 import Image from 'next/image'
+import { FC } from 'react'
 
 import styles from '@/screens/channel/style.module.sass'
 
-export default function ChannelProfile({ channel }) {
+interface ChannelProfile {
+	channel: any
+}
+
+const ChannelProfile: FC<ChannelProfile> = ({ channel }) => {
 	const sn = channel.snippet,
 		st = channel.statistics
 
@@ -24,3 +29,5 @@ export default function ChannelProfile({ channel }) {
 		</div>
 	)
 }
+
+export default ChannelProfile

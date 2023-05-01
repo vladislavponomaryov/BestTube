@@ -20,8 +20,8 @@ const footerMenuItemsSecond = [
 ]
 
 export default function Index() {
-	const drawerFooterFirst = footerMenuItemsFirst.map(item => <Item name={item.name} href={item.href} />)
-	const drawerFooterSecond = footerMenuItemsSecond.map(item => <Item name={item.name} href={item.href} />)
+	const drawerFooterFirst = footerMenuItemsFirst.map((item, index) => <Item key={index} name={item.name} href={item.href} />)
+	const drawerFooterSecond = footerMenuItemsSecond.map((item, index) => <Item key={index} name={item.name} href={item.href} />)
 
 	return (
 		<footer className={styles.footer}>

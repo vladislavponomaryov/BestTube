@@ -6,6 +6,8 @@ import MainLayout from '@/components/layout/MainLayout'
 
 import index from '@/store/index'
 
+import { Children } from '@/providers/MainProvider.interface'
+
 const queryClient = new QueryClient({
 	defaultOptions: {
 		queries: {
@@ -15,7 +17,7 @@ const queryClient = new QueryClient({
 })
 export const MyContext = React.createContext('')
 
-const MainProvider: FC = ({ children }) => {
+const MainProvider: FC<Children> = ({ children }) => {
 	return (
 		<Provider store={index}>
 			<QueryClientProvider client={queryClient}>

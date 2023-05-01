@@ -1,10 +1,10 @@
-const ContentLayoutController = (page, element) => {
+const ContentLayoutController = (page: any, element: any) => {
 	if (!element) return
 
 	let mainContainer = element
 	let mainContainerStyle = getComputedStyle(mainContainer)
 	let mainContainerWidth = clearPX(mainContainerStyle.getPropertyValue('width'))
-	let currentCW, largeCW, desktopCW, mediumCW, smallCW, extraSmallCW
+	let currentCW: number, largeCW: number, desktopCW: number, mediumCW: number, smallCW: number, extraSmallCW: number
 
 	switch (page) {
 		case 'home':
@@ -41,7 +41,7 @@ const ContentLayoutController = (page, element) => {
 		})
 	}).observe(mainContainer)
 
-	function clearPX(element) {
+	function clearPX(element: any) {
 		return +element.slice(0, element.length - 2)
 	}
 
@@ -50,12 +50,12 @@ const ContentLayoutController = (page, element) => {
 		mainContainerWidth = clearPX(mainContainerStyle.getPropertyValue('width'))
 	}
 
-	function addStyles(styles) {
+	function addStyles(styles: any) {
 		let id = 'mainContentStyles'
 
 		if (document.getElementById(id)) {
 			let stylesElement = document.getElementById(id)
-			stylesElement.innerHTML = styles
+			stylesElement!.innerHTML = styles
 		} else {
 			let stylesElement = document.createElement('style')
 			stylesElement.id = id
@@ -65,7 +65,7 @@ const ContentLayoutController = (page, element) => {
 		}
 	}
 
-	function checkCurrentPosition(gettingCW, quantityElements) {
+	function checkCurrentPosition(gettingCW: number, quantityElements: number) {
 		if (currentCW !== gettingCW) {
 			currentCW = gettingCW
 			let additional = ''

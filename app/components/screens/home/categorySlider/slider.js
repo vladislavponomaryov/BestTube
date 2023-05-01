@@ -1,6 +1,4 @@
-import React from 'react'
-
-const Slider = () => {
+const Slider = mainElement => {
 	class Slider {
 		position = 0
 		constructor(mainElement) {
@@ -106,9 +104,7 @@ const Slider = () => {
 
 			let visClass = 'visibility'
 
-			position === 0 || Math.abs(position) !== maxPosition
-				? this.nextButton.classList.add(visClass)
-				: this.nextButton.classList.remove(visClass)
+			position === 0 || Math.abs(position) !== maxPosition ? this.nextButton.classList.add(visClass) : this.nextButton.classList.remove(visClass)
 
 			position < 0 ? this.prevButton.classList.add(visClass) : this.prevButton.classList.remove(visClass)
 		}

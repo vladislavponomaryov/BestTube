@@ -18,7 +18,7 @@ export const Home = () => {
 				<>
 					<CategorySlider />
 					<div className={styles.content}>
-						<VideoContent videoList={list} videoCount={4} />
+						<VideoContent videoList={list} />
 					</div>
 				</>
 			)}

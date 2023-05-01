@@ -1,16 +1,22 @@
+import { FC } from 'react'
+
 import NavItem from '@/components/layout/MainLayout/Drawer/MainDrawer/NavItem'
 import styles from '@/components/layout/MainLayout/Drawer/MainDrawer/style.module.sass'
 
-import { MenuItem } from '@/configs/menu.interface'
-
-type NavGroupItemProps = {
-	id: string
-	title: string
-	type: string
-	children?: MenuItem[]
+interface NavGroupItem {
+	item: {
+		id: string
+		title: string
+		type: string
+		children?: {
+			id: string
+			title: string
+			type: string
+		}[]
+	}
 }
 
-const NavGroup = ({ item }) => {
+const NavGroup: FC<NavGroupItem> = ({ item }) => {
 	const navItem = item.children?.map(item => {
 		return <NavItem key={item.id} item={item} />
 	})
