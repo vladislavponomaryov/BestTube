@@ -87,13 +87,16 @@
 .videoSection
   margin: 0 2px
   display: flex
-  flex: 1 1 auto
+  flex: 1 1 auto !important
   padding-bottom: 8px
   > a
     display: inline-block
     img
       height: 100px !important
       width: auto !important
+  @media screen and (max-width: 1150px)
+    border-top: 1px solid $borderColor
+    padding: 24px 0 0
 
 .videoSection .wrapper
   padding: 0 0 0 5px
@@ -144,3 +147,27 @@
     display: -webkit-box
     -webkit-line-clamp: 2
     -webkit-box-orient: vertical
+
+
+
+.channelSection
+  //channel page
+  // Работает до 511
+  @media screen and (max-width: 511px)
+    display: flex
+    margin: 0 0 10px
+    > a
+      display: inline-block
+      max-width: 140px
+    .wrapper
+      padding: 0 0 0 5px
+      display: inline-block
+      .information
+        h4
+          margin-bottom: 5px
+        .account-name
+          display: block !important
+        span
+          line-height: 0.5
+          &:after
+            display: none

@@ -4,6 +4,8 @@
 .banner
   width: 100%
   min-height: 300px
+  object-position: center
+  object-fit: cover
 
 .profileHeader
   background: $channel-background-color
@@ -78,66 +80,28 @@
   background: $black
 
 
-// Работает до 600
-@media screen and (max-width: 600px)
-  .content
-    padding-bottom: 40px
-    header
-      .wrapper
-        .title
-          flex-direction: column
-          .profile
-            flex-direction: column
-            align-items: center
-            img
-              height: 56px
-              width: 56px
-              margin-bottom: 10px
-            .information
-              text-align: center
-              span
-                line-height: 1.8
-          button
-            margin-top: 10px
-        .toolbar
-          li
-            &:last-child, &:nth-child(5), &:nth-child(4)
-              display: none
-    .list
-      .feature
+.content
+  // Работает до 600
+  @media screen and (max-width: 600px)
+  padding-bottom: 40px
+  header
+    .wrapper
+      .title
         flex-direction: column
-        padding-bottom: 0
-        iframe
-          width: 100%
-          height: 300px
-        .information
+        .profile
+          flex-direction: column
+          align-items: center
+          img
+            height: 56px
+            width: 56px
+            margin-bottom: 10px
+          .information
+            text-align: center
+            span
+              line-height: 1.8
+        button
           margin-top: 10px
-          span, p
+      .toolbar
+        li
+          &:last-child, &:nth-child(5), &:nth-child(4)
             display: none
-
-// Работает до 511
-@media screen and (max-width: 511px)
-  #app
-    main
-      .content
-        .list
-          .category
-            .videoContent
-              section
-                display: flex
-                margin: 0 0 10px
-                > a
-                  display: inline-block
-                  max-width: 140px
-                .wrapper
-                  padding: 0 0 0 5px
-                  display: inline-block
-                  .information
-                    h4
-                      margin-bottom: 5px
-                    .account-name
-                      display: block !important
-                    span
-                      line-height: 0.5
-                      &:after
-                        display: none

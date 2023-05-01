@@ -102,50 +102,38 @@
 
 // Работает до 1150
 @media screen and (max-width: 1150px)
-  #app
-    main
-      margin-left: 0 !important
-      margin-right: 0 !important
-      width: 100% !important
-      padding-top: 0
-      .content.video
-        flex-direction: column
-        .primary
-          margin: 0
-          .videoPlayer
-            height: 360px
-            iframe
-              position: fixed
-              left: 0
-              width: calc(100%)
-          .comment
-            padding: 12px 0
-            .add, .list, .info button
-              display: none
-          .videoDesc
-            .description
-              margin-left: 0
-              button
-                display: none
 
-        .videoContent
-          border-top: 1px solid $borderColor
-          padding: 24px 0 0
+.content
+  @media screen and (max-width: 1150px)
+    flex-direction: column
 
-// Работает до 792
-@media screen and (max-width: 792px)
-  #app
-    > .sidebar
+
+.primary
+  @media screen and (max-width: 1150px)
+    margin: 0
+
+.videoPlayer
+  @media screen and (max-width: 1150px)
+    height: 360px
+    iframe
+      position: fixed
+      left: 0
+      width: calc(100%)
+
+.description
+  @media screen and (max-width: 1150px)
+    margin-left: 0
+    button
       display: none
-    main
-      .content
-        .primary
-          .videoInfo
-            > div
-              flex-direction: column
-              align-items: flex-start
-              .buttons
-                width: 100%
-                justify-content: space-between
-                button
-                  padding: 6px 0
+
+.videoInfo
+  @media screen and (max-width: 792px)
+    > div
+      flex-direction: column
+      align-items: flex-start
+.buttons
+  @media screen and (max-width: 792px)
+    width: 100%
+    justify-content: space-between
+    button
+      padding: 6px 0
