@@ -2,12 +2,15 @@ import cn from 'clsx'
 import Image from 'next/image'
 import { useRouter } from 'next/router'
 import { useQuery } from 'react-query'
-import ChannelService from 'services/channel.service'
 
 import Feature from '@/screens/channel/feature'
 import ChannelProfile from '@/screens/channel/profile'
 import Sections from '@/screens/channel/sections'
 import styles from '@/screens/channel/style.module.sass'
+
+import { IChannel } from '@/shared/types/channel.interface'
+
+import ChannelService from '@/services/channel.service'
 
 const toolbarItemsData = ['Home', 'Videos', 'Playlists', 'Community', 'Channels', 'About']
 
@@ -15,7 +18,8 @@ export const Channel = () => {
 	const { query } = useRouter()
 	const id = query?.id
 
-	const { data: channel } = useQuery(`channel${id}`, () => ChannelService.getById(id))
+	const { data } = useQuery(`channel${id}`, () => ChannelService.getById(id))
+	const channel: IChannel = data
 	let featureId = channel?.brandingSettings?.channel?.unsubscribedTrailer
 
 	const toolbarItems = toolbarItemsData.map((item, index) => {

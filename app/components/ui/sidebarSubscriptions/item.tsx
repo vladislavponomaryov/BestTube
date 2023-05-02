@@ -1,16 +1,20 @@
 import Link from 'next/link'
 import { FC } from 'react'
 import { useQuery } from 'react-query'
-import ChannelService from 'services/channel.service'
 
 import styles from '@/components/layout/MainLayout/Drawer/MainDrawer/style.module.sass'
+
+import { IChannel } from '@/shared/types/channel.interface'
+
+import ChannelService from '@/services/channel.service'
 
 interface Item {
 	id: string
 }
 
 const Item: FC<Item> = ({ id }) => {
-	const { data: channel } = useQuery(`channel${id}`, () => ChannelService.getById(id))
+	const { data } = useQuery(`channel${id}`, () => ChannelService.getById(id))
+	const channel: IChannel = data
 
 	//const channel = item
 

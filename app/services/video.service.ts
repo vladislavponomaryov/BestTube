@@ -1,25 +1,26 @@
-import { instance } from 'api'
+import instance from '../api'
 
 class VideoService {
-	async getById(id) {
+	async getById(id: string | string[] | undefined) {
 		return instance
 			.get('/videos', {
 				params: {
 					part: 'snippet,contentDetails,statistics',
-					id: id
-				}
+					id: id,
+				},
 			})
-			.then(data => data?.data?.items[0])
+			.then(data => data.data.items[0])
 	}
-	async getPopular(count) {
+
+	async getPopular(count: number) {
 		return instance
 			.get(`/videos`, {
 				params: {
 					part: 'snippet,contentDetails,statistics',
 					maxResults: count,
 					chart: 'mostPopular',
-					regionCode: 'US'
-				}
+					regionCode: 'US',
+				},
 			})
 			.then(data => data?.data?.items)
 	}

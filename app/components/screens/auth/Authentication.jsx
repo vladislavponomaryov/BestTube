@@ -1,12 +1,10 @@
+import MainLayout from 'components/layout/MainLayout'
+import Button from 'components/ui/button/Button'
+import Field from 'components/ui/field/Field'
 import React, { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { useMutation } from 'react-query'
 import AuthService from 'services/auth.service'
-
-import MainLayout from 'components/layout/MainLayout'
-
-import Button from 'components/ui/button/Button'
-import Field from 'components/ui/field/Field'
 
 const Authentication = () => {
 	const [type, setType] = useState('login')
@@ -15,16 +13,15 @@ const Authentication = () => {
 		register,
 		handleSubmit,
 		formState: { errors },
-		reset
+		reset,
 	} = useForm({ mode: 'onChange' })
 
 	const onSubmit = data => mutate(data)
 
 	const { mutate, isLoading } = useMutation(['auth'], ({ email, password }) => AuthService.main(type, email, password), {
 		onSuccess: data => {
-			console.log(data)
 			reset()
-		}
+		},
 	})
 
 	return (

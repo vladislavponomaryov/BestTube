@@ -1,16 +1,20 @@
 import Link from 'next/link'
 import { FC } from 'react'
 import { useQuery } from 'react-query'
-import VideoService from 'services/video.service'
 
 import styles from '@/components/screens/channel/feature/style.module.sass'
+
+import { IVideo } from '@/shared/types/video.interface'
+
+import VideoService from '@/services/video.service'
 
 interface Feature {
 	id: string
 }
 
 const Feature: FC<Feature> = ({ id }) => {
-	const { data: item } = useQuery(id, () => VideoService.getById(id))
+	const { data } = useQuery(id, () => VideoService.getById(id))
+	const item: IVideo = data
 
 	return (
 		<>

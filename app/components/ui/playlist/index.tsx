@@ -5,6 +5,8 @@ import styles from '@/screens/channel/sections/style.module.sass'
 
 import VideoContent from '@/ui/videoContent'
 
+import { IPlaylist, IPlaylistItems } from '@/shared/types/playlist.interface'
+
 import PlaylistService from '@/services/playlist.service'
 
 interface Playlists {
@@ -12,8 +14,11 @@ interface Playlists {
 }
 
 const Playlists: FC<Playlists> = ({ id }) => {
-	const { data: playlist } = useQuery(`playlist${id}`, () => PlaylistService.getById(id))
-	const { data: playlistItems } = useQuery(`playlistItems${id}`, () => PlaylistService.getItems(id))
+	const { data } = useQuery(`playlist${id}`, () => PlaylistService.getById(id))
+	const playlist: IPlaylist = data
+	const { data: dataItems } = useQuery(`playlistItems${id}`, () => PlaylistService.getItems(id))
+	const playlistItems: IPlaylistItems[] = dataItems
+	console.log(playlistItems)
 
 	return (
 		<>

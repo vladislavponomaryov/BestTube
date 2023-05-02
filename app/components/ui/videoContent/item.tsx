@@ -5,12 +5,16 @@ import { FC } from 'react'
 
 import styles from '@/components/ui/videoContent/style.module.sass'
 
+import { IChannel } from '@/shared/types/channel.interface'
+import { IVideo } from '@/shared/types/video.interface'
+
 interface Item {
-	item: any
-	channels: any
+	item: IVideo
+	channels: IChannel[]
 }
 
 const Item: FC<Item> = ({ item, channels }) => {
+	debugger
 	const sn = item.snippet,
 		st = item.statistics
 	const videoId = item?.contentDetails?.videoId ? item?.contentDetails?.videoId : item.id

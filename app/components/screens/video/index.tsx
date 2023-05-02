@@ -5,13 +5,15 @@ import Image from 'next/image'
 import { useRouter } from 'next/router'
 import { useEffect, useRef, useState } from 'react'
 import { useQuery } from 'react-query'
-import VideoService from 'services/video.service'
 
 import Comments from '@/screens/video/comments'
 import styles from '@/screens/video/style.module.sass'
 import videoPageHeight from '@/screens/video/videoPageHeight'
 
+import { IVideo } from '@/shared/types/video.interface'
+
 import { projectData } from '@/services/data.services'
+import VideoService from '@/services/video.service'
 
 export const Video = () => {
 	const { query } = useRouter()
@@ -20,7 +22,8 @@ export const Video = () => {
 	const mainElement = useRef(null)
 	const videoPlayerElement = useRef(null)
 
-	const { data: video } = useQuery(`video${id}`, () => VideoService.getById(id))
+	const { data } = useQuery(`video${id}`, () => VideoService.getById(id))
+	const video: IVideo = data
 
 	let sn = video?.snippet,
 		st = video?.statistics

@@ -1,23 +1,23 @@
-import { instance } from 'api'
+import instance from 'api'
 
 class PlaylistService {
-	async getById(id) {
+	async getById(id: string | string[] | undefined) {
 		return instance
 			.get(`/playlists`, {
 				params: {
 					part: 'snippet',
-					id: id
-				}
+					id: id,
+				},
 			})
 			.then(data => data?.data?.items[0])
 	}
-	async getItems(id) {
+	async getItems(id: string | string[] | undefined) {
 		return instance
 			.get(`/playlistItems`, {
 				params: {
 					part: 'snippet,contentDetails',
-					playlistId: id
-				}
+					playlistId: id,
+				},
 			})
 			.then(data => data?.data?.items)
 	}

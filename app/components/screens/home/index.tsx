@@ -5,12 +5,15 @@ import styles from '@/components/screens/home/style.module.sass'
 
 import VideoContent from '@/ui/videoContent'
 
+import { IVideo } from '@/shared/types/video.interface'
+
 import { projectData } from '@/services/data.services'
 
 export const Home = () => {
-	//const { data: list } = useQuery(['get popular video'], () => VideoService.getPopular(32))
+	/*const { data } = useQuery(['get popular video'], () => VideoService.getPopular(32))
+	const list: IVideo[] = data*/
 
-	const list = projectData.video
+	const list: IVideo[] = projectData.video
 
 	return (
 		<>
