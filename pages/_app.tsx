@@ -1,6 +1,6 @@
 import type { AppProps } from 'next/app'
 
-import '@/assets/style/main.sass'
+import '../app/assets/style/main.sass'
 
 import MainProvider from '@/providers/MainProvider'
 

@@ -1,4 +1,3 @@
-import userAvatar from 'assets/images/userAvatars/10.png'
 import cn from 'clsx'
 import { useAuth } from 'hooks/useAuth'
 import Image from 'next/image'
@@ -7,6 +6,8 @@ import { useRouter } from 'next/router'
 import styles from '@/components/layout/MainLayout/Header/headerNavigation/style.module.sass'
 
 import Button from '@/ui/button/Button'
+
+import userAvatar from '@/images/userAvatars/10.png'
 
 const HeaderNavigation = () => {
 	const { isAuth } = useAuth() // TODO: auth

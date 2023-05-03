@@ -4,9 +4,11 @@ import { Provider } from 'react-redux'
 
 import MainLayout from '@/components/layout/MainLayout'
 
+import { Children } from '@/shared/types/providers/MainProvider.interface'
+
 import index from '@/store/index'
 
-import { Children } from '@/providers/MainProvider.interface'
+import HeadProvider from '@/providers/HeadProvider'
 
 const queryClient = new QueryClient({
 	defaultOptions: {
@@ -19,11 +21,13 @@ export const MyContext = React.createContext('')
 
 const MainProvider: FC<Children> = ({ children }) => {
 	return (
-		<Provider store={index}>
-			<QueryClientProvider client={queryClient}>
-				<MainLayout>{children}</MainLayout>
-			</QueryClientProvider>
-		</Provider>
+		<HeadProvider>
+			<Provider store={index}>
+				<QueryClientProvider client={queryClient}>
+					<MainLayout>{children}</MainLayout>
+				</QueryClientProvider>
+			</Provider>
+		</HeadProvider>
 	)
 }
 

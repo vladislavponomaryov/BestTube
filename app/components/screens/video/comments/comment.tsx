@@ -1,7 +1,8 @@
-import userPhoto from 'assets/images/userAvatars/2.png'
 import Image from 'next/image'
 
 import styles from '@/components/screens/video/comments/style.module.sass'
+
+import userPhoto from '@/images/userAvatars/2.png'
 
 export default function Comment() {
 	return (

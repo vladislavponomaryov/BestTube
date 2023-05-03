@@ -8,7 +8,7 @@ import ChannelProfile from '@/screens/channel/profile'
 import Sections from '@/screens/channel/sections'
 import styles from '@/screens/channel/style.module.sass'
 
-import { IChannel } from '@/shared/types/channel.interface'
+import { IChannel } from '@/shared/types/services/channel.interface'
 
 import ChannelService from '@/services/channel.service'
 

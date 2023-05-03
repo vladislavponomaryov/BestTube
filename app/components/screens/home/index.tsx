@@ -5,7 +5,7 @@ import styles from '@/components/screens/home/style.module.sass'
 
 import VideoContent from '@/ui/videoContent'
 
-import { IVideo } from '@/shared/types/video.interface'
+import { IVideo } from '@/shared/types/services/video.interface'
 
 import { projectData } from '@/services/data.services'
 

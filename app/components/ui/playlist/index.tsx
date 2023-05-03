@@ -5,7 +5,7 @@ import styles from '@/screens/channel/sections/style.module.sass'
 
 import VideoContent from '@/ui/videoContent'
 
-import { IPlaylist, IPlaylistItems } from '@/shared/types/playlist.interface'
+import { IPlaylist, IPlaylistItems } from '@/shared/types/services/playlist.interface'
 
 import PlaylistService from '@/services/playlist.service'
 

@@ -1,9 +1,10 @@
-import userImage from 'assets/images/userAvatars/4.png'
 import Image from 'next/image'
 
 import Comment from '@/screens/video/comments/comment'
 
 import styles from '@/components/screens/video/comments/style.module.sass'
+
+import userImage from '@/images/userAvatars/4.png'
 
 export default function Comments() {
 	let comments = []

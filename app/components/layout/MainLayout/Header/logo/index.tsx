@@ -7,7 +7,7 @@ import style from '@/components/layout/MainLayout/Header/logo/style.module.sass'
 import { useActions } from '@/hooks/useActions'
 import { useApp } from '@/hooks/useApp'
 
-import logo from '@/assets/images/logo.svg'
+import logo from '@/images/logo.svg'
 
 export default function Logotype() {
 	const { isOpenDrawer } = useApp()

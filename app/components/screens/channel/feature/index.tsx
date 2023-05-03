@@ -4,7 +4,7 @@ import { useQuery } from 'react-query'
 
 import styles from '@/components/screens/channel/feature/style.module.sass'
 
-import { IVideo } from '@/shared/types/video.interface'
+import { IVideo } from '@/shared/types/services/video.interface'
 
 import VideoService from '@/services/video.service'
 
@@ -20,7 +20,7 @@ const Feature: FC<Feature> = ({ id }) => {
 		<>
 			{item && (
 				<div className={styles.feature}>
-					<Link href={`/video?id=${item.id}`}>
+					<Link href={{ pathname: `/video/${item.id}` }}>
 						<img src={item.snippet.thumbnails.high.url} alt='Feature image' />
 					</Link>
 					<div className={styles.information}>

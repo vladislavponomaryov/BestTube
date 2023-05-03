@@ -1,4 +1,3 @@
-import userAvatar from 'assets/images/userAvatars/9.png'
 import cn from 'clsx'
 import VideoContent from 'components/ui/videoContent'
 import Image from 'next/image'
@@ -10,10 +9,12 @@ import Comments from '@/screens/video/comments'
 import styles from '@/screens/video/style.module.sass'
 import videoPageHeight from '@/screens/video/videoPageHeight'
 
-import { IVideo } from '@/shared/types/video.interface'
+import { IVideo } from '@/shared/types/services/video.interface'
 
 import { projectData } from '@/services/data.services'
 import VideoService from '@/services/video.service'
+
+import userAvatar from '@/images/userAvatars/9.png'
 
 export const Video = () => {
 	const { query } = useRouter()

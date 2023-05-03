@@ -3,7 +3,7 @@ import { useQuery } from 'react-query'
 
 import Section from '@/screens/channel/sections/section'
 
-import { ISection } from '@/shared/types/channel.interface'
+import { ISection } from '@/shared/types/services/channel.interface'
 
 import ChannelService from '@/services/channel.service'
 

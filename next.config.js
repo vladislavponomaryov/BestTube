@@ -9,6 +9,12 @@ const nextConfig = {
 			{
 				hostname: 'yt3.ggpht.com',
 			},
+			{
+				hostname: 'lh3.googleusercontent.com',
+			},
+			{
+				hostname: 'i.ytimg.com',
+			},
 		],
 	},
 }
