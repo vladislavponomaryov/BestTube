@@ -1,30 +1,25 @@
 import cn from 'clsx'
-import VideoContent from 'components/ui/videoContent'
 import Image from 'next/image'
-import { useRouter } from 'next/router'
-import { useEffect, useRef, useState } from 'react'
-import { useQuery } from 'react-query'
+import { FC, useEffect, useRef, useState } from 'react'
 
 import Comments from '@/screens/video/comments'
 import styles from '@/screens/video/style.module.sass'
 import videoPageHeight from '@/screens/video/videoPageHeight'
 
+import VideoContent from '@/components/ui/videoContent'
+
 import { IVideo } from '@/shared/types/services/video.interface'
 
 import { projectData } from '@/services/data.services'
-import VideoService from '@/services/video.service'
 
 import userAvatar from '@/images/userAvatars/9.png'
 
-export const Video = () => {
-	const { query } = useRouter()
-	const id = query?.id
+export const Video: FC<any> = ({ videoItem, id }) => {
 	const list = projectData.video
 	const mainElement = useRef(null)
 	const videoPlayerElement = useRef(null)
 
-	const { data } = useQuery(`video${id}`, () => VideoService.getById(id))
-	const video: IVideo = data
+	const video: IVideo = videoItem
 
 	let sn = video?.snippet,
 		st = video?.statistics

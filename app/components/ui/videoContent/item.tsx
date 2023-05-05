@@ -19,7 +19,7 @@ const Item: FC<Item> = ({ item, channels }) => {
 	const sn = item.snippet,
 		st = item.statistics
 	const videoId = item?.contentDetails?.videoId ? item?.contentDetails?.videoId : item.id
-	let channel: IChannel = channels.find((channel: IChannel) => channel.id === sn.channelId)
+	//let channel: IChannel = channels.find((channel: IChannel) => channel.id === sn.channelId)
 	const pathname = getPathname()
 
 	return (
@@ -31,13 +31,13 @@ const Item: FC<Item> = ({ item, channels }) => {
 		>
 			<Link href={{ pathname: `/video/${videoId}` }} className={styles.imageBlock}>
 				<div>
-					<Image src={sn.thumbnails.high.url} className={styles.image} width={338} height={253} alt='Preview image' />
+					<Image src={sn?.thumbnails?.high?.url} className={styles.image} width={338} height={253} alt='Preview image' />
 					{/*<div className={styles.videoLength}>23:45</div>*/}
 				</div>
 			</Link>
 			<div className={styles.wrapper}>
 				<Link className={styles.account} href={`/channel/${sn.channelId}`}>
-					<Image height={36} width={36} src={channel.snippet.thumbnails.default.url} alt='Account image' />
+					<Image height={36} width={36} src={sn?.thumbnails?.default?.url} alt='Account image' />
 				</Link>
 				<Link className={styles.information} href={`/video/${item.id}`}>
 					<h4>{sn.title}</h4>

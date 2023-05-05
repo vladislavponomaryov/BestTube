@@ -1,3 +1,5 @@
+import { FC } from 'react'
+
 import CategorySlider from '@/screens/home/categorySlider'
 
 import '@/components/screens/home/style.module.sass'
@@ -5,16 +7,7 @@ import styles from '@/components/screens/home/style.module.sass'
 
 import VideoContent from '@/ui/videoContent'
 
-import { IVideo } from '@/shared/types/services/video.interface'
-
-import { projectData } from '@/services/data.services'
-
-export const Home = () => {
-	/*const { data } = useQuery(['get popular video'], () => VideoService.getPopular(32))
-	const list: IVideo[] = data*/
-
-	const list: IVideo[] = projectData.video
-
+export const Home: FC<any> = ({ list }) => {
 	return (
 		<>
 			{list && (
