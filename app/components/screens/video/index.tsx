@@ -1,6 +1,7 @@
 import cn from 'clsx'
 import Image from 'next/image'
 import { FC, useEffect, useRef, useState } from 'react'
+import { useQuery } from 'react-query'
 
 import Comments from '@/screens/video/comments'
 import styles from '@/screens/video/style.module.sass'
@@ -10,14 +11,16 @@ import VideoContent from '@/components/ui/videoContent'
 
 import { IVideo } from '@/shared/types/services/video.interface'
 
-import { projectData } from '@/services/data.services'
+import VideoService from '@/services/video.service'
 
 import userAvatar from '@/images/userAvatars/9.png'
 
 export const Video: FC<any> = ({ videoItem, id }) => {
-	const list = projectData.video
 	const mainElement = useRef(null)
 	const videoPlayerElement = useRef(null)
+
+	const { data } = useQuery(['get popular video in video page'], () => VideoService.getPopular(15))
+	const list: IVideo[] = data
 
 	const video: IVideo = videoItem
 
@@ -41,7 +44,7 @@ export const Video: FC<any> = ({ videoItem, id }) => {
 								ref={mainElement}
 								width='100%'
 								height='360'
-								src={`https://www.youtube.com/embed/${id}?autoplay=0`}
+								src={`https://www.youtube.com/embed/${id}?autoplay=1`}
 								title='YouTube video player'
 								allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share'
 								allowFullScreen
@@ -91,7 +94,7 @@ export const Video: FC<any> = ({ videoItem, id }) => {
 						</div>
 						<Comments />
 					</div>
-					<VideoContent videoList={list} />
+					{list && <VideoContent videoList={list} />}
 				</>
 			)}
 		</div>
