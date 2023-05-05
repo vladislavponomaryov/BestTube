@@ -1,5 +1,4 @@
 import cn from 'clsx'
-import useMediaQuery from 'hooks/useMediaQuery'
 import { FC, useEffect } from 'react'
 
 import MainDrawer from '@/components/layout/MainLayout/Drawer/MainDrawer'
@@ -10,6 +9,7 @@ import styles from '@/components/layout/MainLayout/Drawer/style.module.sass'
 import getPathname from '@/hooks/getPathname'
 import { useActions } from '@/hooks/useActions'
 import { useApp } from '@/hooks/useApp'
+import useMediaQuery from '@/hooks/useMediaQuery'
 
 const Drawer: FC = () => {
 	const { isMainDrawer, isOpenDrawer } = useApp()

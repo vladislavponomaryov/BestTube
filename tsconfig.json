@@ -19,6 +19,7 @@
 			"@/components/*": ["app/components/*"],
 			"@/ui/*": ["app/components/ui/*"],
 			"@/screens/*": ["app/components/screens/*"],
+			"@/api/*": ["app/api/*"],
 			"@/styles/*": ["app/styles/*"],
 			"@/shared/*": ["app/shared/*"],
 			"@/hooks/*": ["app/hooks/*"],

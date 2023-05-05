@@ -1,5 +1,4 @@
 import cn from 'clsx'
-import useMediaQuery from 'hooks/useMediaQuery'
 import { useEffect, useRef } from 'react'
 
 import slider from '@/screens/home/categorySlider/slider'
@@ -7,6 +6,7 @@ import slider from '@/screens/home/categorySlider/slider'
 import styles from '@/components/screens/home/categorySlider/style.module.sass'
 
 import { useApp } from '@/hooks/useApp'
+import useMediaQuery from '@/hooks/useMediaQuery'
 
 const sliderItemsData = [
 	'All',

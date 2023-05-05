@@ -15,7 +15,7 @@ import { IVideo } from '@/shared/types/services/video.interface'
 import { projectData } from '@/services/data.services'
 
 interface VideoContent {
-	videoList: IVideo[]
+	videoList: any
 }
 
 const VideoContent: FC<VideoContent> = ({ videoList }) => {

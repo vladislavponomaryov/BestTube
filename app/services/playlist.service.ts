@@ -1,4 +1,4 @@
-import instance from 'api'
+import instance from '@/api/index'
 
 class PlaylistService {
 	async getById(id: string | string[] | undefined) {
