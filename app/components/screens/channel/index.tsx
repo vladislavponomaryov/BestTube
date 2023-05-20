@@ -1,18 +1,20 @@
 import cn from 'clsx'
 import Image from 'next/image'
 import { FC } from 'react'
+import { useQuery } from 'react-query'
 
 import Feature from '@/screens/channel/feature'
 import ChannelProfile from '@/screens/channel/profile'
 import Sections from '@/screens/channel/sections'
 import styles from '@/screens/channel/style.module.sass'
 
-import { IChannel } from '@/shared/types/services/channel.interface'
+import ChannelService from '@/services/channel.service'
 
 const toolbarItemsData = ['Home', 'Videos', 'Playlists', 'Community', 'Channels', 'About']
 
 export const Channel: FC<any> = ({ channelItem, id }) => {
-	const channel: IChannel = channelItem
+	const { data } = useQuery(`channel${id}`, () => ChannelService.getById(id))
+	const channel = data
 	let featureId = channel?.brandingSettings?.channel?.unsubscribedTrailer
 
 	const toolbarItems = toolbarItemsData.map((item, index) => {
@@ -21,11 +23,14 @@ export const Channel: FC<any> = ({ channelItem, id }) => {
 				className={cn(styles.li, {
 					[styles.active]: index === 0,
 				})}
+				key={index}
 			>
 				{item}
 			</li>
 		)
 	})
+
+	// TODO: Desktop channel profile
 
 	return (
 		<div className={styles.content}>

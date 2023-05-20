@@ -1,6 +1,6 @@
 import { useRouter } from 'next/router'
 
-const GetPathname = () => {
+const usePathname = () => {
 	let { pathname } = useRouter()
 	pathname = pathname.slice(1)
 	pathname = pathname.slice(0, pathname.indexOf('/'))
@@ -8,4 +8,4 @@ const GetPathname = () => {
 	return pathname
 }
 
-export default GetPathname
+export default usePathname

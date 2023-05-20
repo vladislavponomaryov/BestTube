@@ -7,7 +7,7 @@ import styles from '@/components/ui/videoContent/style.module.sass'
 import contentLayoutController from '@/ui/videoContent/contentLayoutController'
 import Item from '@/ui/videoContent/item'
 
-import getPathname from '@/hooks/getPathname'
+import usePathname from '@/hooks/usePathname'
 
 import { IChannel } from '@/shared/types/services/channel.interface'
 import { IVideo } from '@/shared/types/services/video.interface'
@@ -19,12 +19,12 @@ interface VideoContent {
 }
 
 const VideoContent: FC<VideoContent> = ({ videoList }) => {
-	const pathname = getPathname()
+	const pathname = usePathname()
 	const channels: IChannel[] = projectData.channel
 	const cssClass = pathname === '' ? 'home' : pathname
 	const videoElementRef = useRef(null)
 
-	let videoContent = videoList.map((item: IVideo) => <Item item={item} channels={channels} key={item.id} />)
+	let videoContent = videoList.map((item: IVideo, index: number) => <Item item={item} channels={channels} key={index} />)
 
 	useEffect(() => {
 		contentLayoutController(cssClass, videoElementRef.current)

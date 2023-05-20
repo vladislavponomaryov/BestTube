@@ -1,13 +1,11 @@
 import { Menu } from '@/configs/menu.interface'
 
-// TODO: maybe create custom type typeof
-
 const dashboard: Menu = {
 	id: 'group-full',
 	title: '',
 	type: 'group',
 	children: [
-		{
+		/*{
 			id: 'group-1',
 			title: '',
 			type: 'group',
@@ -76,14 +74,14 @@ const dashboard: Menu = {
 					icon: 'Liked',
 				},
 			],
-		},
+		},*/
 		{
 			id: 'group-3',
 			title: 'Subscriptions',
 			type: 'group',
 			children: [],
 		},
-		{
+		/*{
 			id: 'group-4',
 			title: 'More from youtube',
 			type: 'group',
@@ -152,7 +150,7 @@ const dashboard: Menu = {
 					icon: 'feedback',
 				},
 			],
-		},
+		},*/
 	],
 }
 

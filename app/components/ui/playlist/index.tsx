@@ -18,7 +18,6 @@ const Playlists: FC<Playlists> = ({ id }) => {
 	const playlist: IPlaylist = data
 	const { data: dataItems } = useQuery(`playlistItems${id}`, () => PlaylistService.getItems(id))
 	const playlistItems: IPlaylistItems[] = dataItems
-	console.log(playlistItems)
 
 	return (
 		<>

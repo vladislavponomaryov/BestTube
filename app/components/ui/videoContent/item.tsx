@@ -5,7 +5,7 @@ import { FC } from 'react'
 
 import styles from '@/components/ui/videoContent/style.module.sass'
 
-import getPathname from '@/hooks/getPathname'
+import usePathname from '@/hooks/usePathname'
 
 import { IChannel } from '@/shared/types/services/channel.interface'
 import { IVideo } from '@/shared/types/services/video.interface'
@@ -20,7 +20,7 @@ const Item: FC<Item> = ({ item, channels }) => {
 		st = item.statistics
 	const videoId = item?.contentDetails?.videoId ? item?.contentDetails?.videoId : item.id
 	//let channel: IChannel = channels.find((channel: IChannel) => channel.id === sn.channelId)
-	const pathname = getPathname()
+	const pathname = usePathname()
 
 	return (
 		<section

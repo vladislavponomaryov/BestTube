@@ -30,6 +30,7 @@ export async function getStaticPaths() {
 export const getStaticProps: GetStaticProps = async ({ params }) => {
 	const id = params!.id
 	const channelItem: IChannel = await ChannelService.getById(id)
+	//const channelItem = projectData.channel.find(element => element.id === id)
 
 	return {
 		props: {

@@ -3,7 +3,6 @@ import Image from 'next/image'
 import { FC, useEffect, useRef, useState } from 'react'
 import { useQuery } from 'react-query'
 
-import Comments from '@/screens/video/comments'
 import styles from '@/screens/video/style.module.sass'
 import videoPageHeight from '@/screens/video/videoPageHeight'
 
@@ -19,8 +18,9 @@ export const Video: FC<any> = ({ videoItem, id }) => {
 	const mainElement = useRef(null)
 	const videoPlayerElement = useRef(null)
 
-	const { data } = useQuery(['get popular video in video page'], () => VideoService.getPopular(15))
+	const { data } = useQuery(['popular videos'], () => VideoService.getPopular(32))
 	const list: IVideo[] = data
+	//const list = projectData.video
 
 	const video: IVideo = videoItem
 
@@ -64,7 +64,7 @@ export const Video: FC<any> = ({ videoItem, id }) => {
 									<button>
 										<span className='_icon-DisLiked'></span>0
 									</button>
-									<button>
+									{/*<button>
 										<span className='_icon-Share'></span>Share
 									</button>
 									<button>
@@ -72,7 +72,7 @@ export const Video: FC<any> = ({ videoItem, id }) => {
 									</button>
 									<button>
 										<span className='_icon-More'></span>
-									</button>
+									</button>*/}
 								</div>
 							</div>
 						</div>
@@ -85,14 +85,14 @@ export const Video: FC<any> = ({ videoItem, id }) => {
 										<span>1.2M subscribers</span>
 									</div>
 								</div>
-								<button>Subscribes</button>
+								{/*<button>Subscribes</button>*/}
 							</div>
 							<div className={cn(styles.description, { [styles.mini]: miniClass })} onClick={() => setMiniClass(!miniClass)}>
 								<pre>{sn.description}</pre>
 								<button>Show more</button>
 							</div>
 						</div>
-						<Comments />
+						{/*<Comments />*/}
 					</div>
 					{list && <VideoContent videoList={list} />}
 				</>

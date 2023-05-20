@@ -1,7 +1,5 @@
 import { FC } from 'react'
 
-import CategorySlider from '@/screens/home/categorySlider'
-
 import '@/components/screens/home/style.module.sass'
 import styles from '@/components/screens/home/style.module.sass'
 
@@ -12,7 +10,7 @@ export const Home: FC<any> = ({ list }) => {
 		<>
 			{list && (
 				<>
-					<CategorySlider />
+					{/*<CategorySlider />*/}
 					<div className={styles.content}>
 						<VideoContent videoList={list} />
 					</div>

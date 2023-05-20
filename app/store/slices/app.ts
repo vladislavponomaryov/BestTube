@@ -3,6 +3,7 @@ import { createSlice } from '@reduxjs/toolkit'
 const initialState = {
 	isMainDrawer: true,
 	isOpenDrawer: null,
+	isOpenMobileSearch: false,
 }
 
 const appSlice = createSlice({
@@ -15,9 +16,12 @@ const appSlice = createSlice({
 		setIsOpenDrawer: (state, action) => {
 			state.isOpenDrawer = action.payload
 		},
+		setIsOpenMobileSearch: (state, action) => {
+			state.isOpenMobileSearch = action.payload
+		},
 	},
 })
 
-export const { setIsMainDrawer, setIsOpenDrawer } = appSlice.actions
+export const { setIsMainDrawer, setIsOpenDrawer, setIsOpenMobileSearch } = appSlice.actions
 
 export default appSlice.reducer

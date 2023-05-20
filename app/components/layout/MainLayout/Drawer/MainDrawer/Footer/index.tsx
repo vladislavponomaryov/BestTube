@@ -19,7 +19,7 @@ const footerMenuItemsSecond = [
 	{ name: 'Test new features', href: 'testNewFeatures' },
 ]
 
-export default function Index() {
+export default function Footer() {
 	const drawerFooterFirst = footerMenuItemsFirst.map((item, index) => <Item key={index} name={item.name} href={item.href} />)
 	const drawerFooterSecond = footerMenuItemsSecond.map((item, index) => <Item key={index} name={item.name} href={item.href} />)
 

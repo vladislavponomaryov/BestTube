@@ -30,6 +30,7 @@ export async function getStaticPaths() {
 export const getStaticProps: GetStaticProps = async ({ params }) => {
 	const id = params!.id
 	const videoItem: IVideo = await VideoService.getById(id)
+	//const videoItem = projectData.video.find(element => element.id === id)
 
 	return {
 		props: {

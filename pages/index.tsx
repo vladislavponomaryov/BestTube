@@ -10,7 +10,6 @@ const HomePage = (props: {}) => {
 	return <Home {...props} />
 }
 
-// Classic getStaticProps or getServerSideProps
 export const getStaticProps: GetStaticProps = async () => {
 	const list: IVideo[] = await VideoService.getPopular(32)
 

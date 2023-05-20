@@ -5,11 +5,14 @@ import { useQuery } from 'react-query'
 import styles from '@/components/layout/MainLayout/Drawer/MainDrawer/style.module.sass'
 
 import { IChannel } from '@/shared/types/services/channel.interface'
+import { IVideo } from '@/shared/types/services/video.interface'
 
 import ChannelService from '@/services/channel.service'
 
 interface Item {
 	id: string
+	item?: IVideo
+	key?: string | number
 }
 
 const Item: FC<Item> = ({ id }) => {
