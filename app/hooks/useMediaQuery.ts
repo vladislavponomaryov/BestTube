@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 
-function useMediaQuery(query) {
-	const getMatches = query => {
+function useMediaQuery(query: any) {
+	const getMatches = (query: any) => {
 		// Prevents SSR issues
 		if (typeof window !== 'undefined') {
 			return window.matchMedia(query).matches
