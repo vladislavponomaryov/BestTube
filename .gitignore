@@ -39,3 +39,7 @@ package-lock.json
 source/react/build
 .idea
 source/react/public
+
+# pwa next.js
+public/sw.js
+public/workbox-*.js
